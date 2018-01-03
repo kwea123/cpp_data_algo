@@ -1,0 +1,117 @@
+#include <iostream>
+#include <list>
+#include <queue>
+using namespace std;
+
+struct Tree{
+	string value;
+	Tree* left;
+	Tree* right;
+	Tree(Tree* left, string value, Tree* right){
+		this->value = value;
+		this->left = left;
+		this->right = right;
+	}
+};
+
+void inorderTraversal(Tree* t){
+	if(t==NULL)
+		return;
+	inorderTraversal(t->left);
+	cout<<t->value<<" ";
+	inorderTraversal(t->right);
+}
+
+list<string> inorder(Tree* t){
+	list<string> res;
+	if(t==NULL)
+		return res;
+	res = inorder(t->left);
+	res.push_back(t->value);
+	list<string> r = inorder(t->right);
+	res.splice(res.end(), r);
+	return res;
+}
+
+void inorder(Tree* t, list<string>* res){
+	if(t==NULL)
+		return;
+	inorder(t->left, res);
+	res->push_back(t->value);
+	inorder(t->right, res);
+}
+
+void BFS(Tree* t, list<string>* res){
+	queue<Tree*> q;
+	q.push(t);
+	while (!q.empty())
+	{
+		Tree* p = q.front(); q.pop();
+		res->push_back(p->value);
+		if (p->left)  q.push(p->left);
+		if (p->right) q.push(p->right);
+	}
+}
+
+struct BST{
+	string value;
+	BST* left;
+	BST* right;
+	BST(BST* left, string value, BST* right){
+		this->value = value;
+		this->left = left;
+		this->right = right;
+	}
+};
+
+string getMin(BST* b){
+	while(b->left!=NULL){
+		b = b->left;
+	}
+	return b->value;
+}
+
+bool contains(BST* b, string v){
+	while(b != NULL){
+		int c = v.compare(b->value);
+		if(c==0)
+			return true;
+		if(c<0)
+			b = b->left;
+		else
+			b = b->right;
+	}
+}
+
+int main() {
+	Tree* t = new Tree(new Tree(NULL, "B", NULL), "A", new Tree (new Tree(NULL, "D", NULL), "C", NULL));
+
+	/* NAIVE INORDER */
+//	inorderTraversal(t);
+//
+//	list<string> l = inorder(t);
+//	while(!l.empty()){
+//		cout<<l.front()<<" ";
+//		l.pop_front();
+//	}
+
+	/* LINEAR INORDER */
+//
+//	list<string> l;
+//	inorder(t, &l);
+//	while(!l.empty()){
+//		cout<<l.front()<<" ";
+//		l.pop_front();
+//	}
+
+	/* BFS */
+	list<string> l;
+	BFS(t, &l);
+	while(!l.empty()){
+		cout<<l.front()<<" ";
+		l.pop_front();
+	}
+
+
+	return 0;
+}

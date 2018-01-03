@@ -1,0 +1,40 @@
+#include <iostream>
+#include <stdexcept>
+using namespace std;
+
+struct PriorityQueue{
+	int* elements;
+	int size;
+
+	PriorityQueue(int capacity){
+		elements = new int[capacity];
+		size = 0;
+	}
+
+	bool isEmpty(){
+		return size == 0;
+	}
+
+	int getMin(){
+		if(size==0)
+			throw exception("No such element");
+		return elements[0];
+	}
+
+	void moveUp(int x, int i) {
+		while (i > 0) {
+			int parent_i = (i - 1) / 2;
+			int y = this.elts[fi];
+			if (y <= x) break;
+			this.elts[i] = y;
+			i = fi;
+		}
+		this.elts[i] = x;
+	}
+
+};
+
+int main() {
+	cout << "!!!Hello World!!!" << endl; // prints !!!Hello World!!!
+	return 0;
+}

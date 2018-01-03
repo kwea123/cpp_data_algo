@@ -1,0 +1,11 @@
+12:49:25 **** Incremental Build of configuration Debug for project Data_Algo ****
+Info: Internal Builder is used for build
+g++ -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\2.o" "..\\src\\2.cpp" 
+g++ -o Data_Algo.exe "src\\1.o" "src\\2.o" 
+src\2.o: In function `main':
+C:\Users\kwea123\Desktop\Data_Algo\Data_Algo\Debug/../src/2.cpp:12: multiple definition of `main'
+src\1.o:C:\Users\kwea123\Desktop\Data_Algo\Data_Algo\Debug/../src/1.cpp:12: first defined here
+collect2.exe: error: ld returned 1 exit status
+
+12:49:27 Build Finished (took 2s.41ms)
+
