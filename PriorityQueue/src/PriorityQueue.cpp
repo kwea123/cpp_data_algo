@@ -3,6 +3,9 @@
 #include <queue>
 #include <functional>
 #include <stdexcept>
+#include <unordered_set>
+#include <set>
+#include <map>
 using namespace std;
 
 struct PriorityQueue{
@@ -79,31 +82,118 @@ struct cmp
     }
 };
 
+struct HuffmanTree{
+
+	int freq;
+	char c;
+	HuffmanTree *left, *right;
+
+	HuffmanTree(char c, int freq){ //leaf
+		this->c = c;
+		this->freq = freq;
+		this->left = NULL;
+		this->right = NULL;
+	}
+
+	HuffmanTree(HuffmanTree *left, HuffmanTree *right){ //internal node
+		this->c = '\0';
+		this->left = left;
+		this->right = right;
+		this->freq = left->freq + right->freq;
+	}
+
+	/* HOMEWORK */
+	void traverse(string prefix, map<char, string>& m){
+		if(left==NULL){ //if leaf
+			m[c] = prefix;
+			return;
+		}
+		left->traverse(prefix+"0", m);
+		right->traverse(prefix+"1", m);
+	}
+
+	char find(string prefix, int i){
+		if(left==NULL) //if leaf
+			return c;
+		if(i==(int)prefix.length())
+			throw exception(); //corrupted code
+		if(prefix[i]=='0')
+			return left->find(prefix, i+1);
+		else
+			return right->find(prefix, i+1);
+	}
+
+	bool operator<(const HuffmanTree& b) const{
+		return freq > b.freq; //we want smaller values in front
+	}
+};
 
 int main() {
 
-	priority_queue<string, vector<string>, cmp> q; //increasing order
+	/* WIKI TITLE */
+//	priority_queue<string, vector<string>, cmp> q; //increasing order
+//
+//	ifstream fin("enwiki-latest-all-titles-in-ns0");
+//	string s;
+//	int i = 0;
+//	int M = 10;
+//	int limit = 1000000; //total = 13644994 titles
+//	while( fin >> s ){
+//		i++;
+//		q.push(s);
+//		if(i>M) //remove the first element when size>100
+//			q.pop();
+////		if(i>=limit)
+////			break;
+//	}
+//
+//	cout<<"There are "<<i<<" titles"<<endl;
+//
+//	while(!q.empty()){
+//		cout<<q.top()<<endl;
+//		q.pop();
+//	}
 
-	ifstream fin("enwiki-latest-all-titles-in-ns0");
-	string s;
-	int i = 0;
-	int M = 10;
-	int limit = 1000000; //total = 13644994 titles
-	while( fin >> s ){
-		i++;
-		q.push(s);
-		if(i>M) //remove the first element when size>100
-			q.pop();
-//		if(i>=limit)
-//			break;
-	}
+	/* HUFFMAN TREE */
+	string word = "mississippi";
 
-	cout<<"There are "<<i<<" titles"<<endl;
-
-	while(!q.empty()){
-		cout<<q.top()<<endl;
+	priority_queue<HuffmanTree*> q;
+	q.push(new HuffmanTree('i',4));
+	q.push(new HuffmanTree('s',4));
+	q.push(new HuffmanTree('m',1));
+	q.push(new HuffmanTree('p',2));
+	while(q.size()>1){
+		HuffmanTree* left = q.top();
 		q.pop();
+		HuffmanTree* right = q.top();
+		q.pop();
+		q.push(new HuffmanTree(left, right));
 	}
+
+	/* HOMEWORK */
+	// traverse
+	map<char, string> m;
+	HuffmanTree* t = q.top();
+	t->traverse("", m);
+	cout<<"original word : "<<word<<endl;
+	for(auto it:m)
+		cout<<it.first<<" "<<it.second<<endl;
+
+	// encode
+	string encode = "";
+	for(char c : word)
+		encode+=m[c];
+	cout<<"encode : "<<encode<<endl;
+
+	// decode
+	int i=0;
+	string decode = "";
+	while(i<(int)encode.length()){
+		char c = t->find(encode, i);
+		decode += c;
+		i += m[c].length();
+	}
+	cout<<"decode : "<<decode<<endl;
 
 	return 0;
 }
