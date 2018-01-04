@@ -1,0 +1,43 @@
+#include <iostream>
+#include <time.h> //set time seed
+#include <stdlib.h>
+using namespace std;
+
+void Knuth(int* a, int n){
+	for(int i=1;i<n;i++){
+		int j = rand()%(i+1); // j in 0..i
+		int tmp = a[i];
+		a[i] = a[j];
+		a[j] = tmp;
+	}
+}
+
+void insertionSort(int* a, int n) {
+	for (int i=1; i<n; i++) {
+		int v = a[i], j = i;
+		for(;0<j && v<a[j-1];j--)
+			a[j] = a[j-1];
+		a[j] = v;
+	}
+}
+
+
+int main() {
+	srand(time(NULL));
+
+	/* KNUTH SHUFFLE */
+	int a[10] = {0,1,2,3,4,5,6,7,8,9};
+	Knuth(a, 10);
+	cout<<"Knuth shuffle!"<<endl;
+	for(int i=0;i<10;i++)
+		cout<<a[i]<<" ";
+	cout<<endl;
+
+	/* INSERTION SORT */
+	insertionSort(a, 10);
+	cout<<"Insertion sort!"<<endl;
+	for(int i=0;i<10;i++)
+		cout<<a[i]<<" ";
+	cout<<endl;
+	return 0;
+}

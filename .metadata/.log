@@ -301,3 +301,9 @@ This warning can be switched off on the Team > Git > Confirmations and Warnings 
 
 !ENTRY org.eclipse.cdt.core 1 0 2018-01-03 17:25:24.527
 !MESSAGE Indexed 'PriorityQueue' (1 sources, 98 headers) in 1.62 sec: 7,755 declarations; 13,808 references; 1 unresolved inclusions; 1 syntax errors; 1 unresolved names (0.0046%)
+
+!ENTRY org.eclipse.cdt.core 1 0 2018-01-04 15:45:12.629
+!MESSAGE Indexed 'Sort' (1 sources, 98 headers) in 1.86 sec: 7,733 declarations; 13,755 references; 0 unresolved inclusions; 0 syntax errors; 0 unresolved names (0%)
+
+!ENTRY org.eclipse.cdt.core 1 0 2018-01-04 22:57:26.492
+!MESSAGE Indexed 'Graph' (1 sources, 98 headers) in 1.12 sec: 7,733 declarations; 13,755 references; 0 unresolved inclusions; 0 syntax errors; 0 unresolved names (0%)

@@ -1,0 +1,16 @@
+#include <iostream>
+#include <time.h> //set time seed
+#include <ctime> // compute elapsed time
+using namespace std;
+
+int* Knuth(int* a, int n){
+	for(int i=1;i<n;i++){
+		int j = rand()%(i+1); // j in 0..i
+	}
+}
+
+int main() {
+	srand(time(NULL));
+	cout << "!!!Hello World!!!" << endl; // prints !!!Hello World!!!
+	return 0;
+}
