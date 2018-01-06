@@ -1,0 +1,41 @@
+#########################################
+#M..#XXXXXXXX#X#X#X#XXXXXXX# X....XX#X#X#
+###.#X####X#X#X#X#X#X###X#####.##.###X#X#
+# X.#X#XXXX#X#XXX#XXX#XXX# # X.X#...#XXX#
+###.###X######X#########X# ###.X#X#.###X#
+# X.......X#XXX#XXXXX#XXX# X...X  #.#XXX#
+###X#####.####X#X#######X###.######.###X#
+#X#X#X#X#.X#.....#...#.......#XXXX#...XX#
+#X#X#X#X#.##.###.#.#.#.#X######X#####.###
+#XXX#X#XX....X #...#...#   #  X...#XX...#
+#X#XXXXXXXX#X# #X#X X#X# # # #..X...#X#.#
+#X#X#X###### # # ### # ### # #.####.###.#
+#X#X#XXXXXX# #     # #     # #..#X#.X #.#
+#X#X######X##### ######### # #X.#X#.###.#
+#XXX#XXXXXX#X#         #   #  X.XXX.....#
+##########X#X##### ######### ##.#######X#
+#XXX#XXXXXXXXXX#   #X#     #  X...#XXXXX#
+###X#X###X####X#####X### ########.#####X#
+#XXX#XXX#XXXXXXXXXXXX#          #.#XXXXX#
+###X#####XX#####X########### ####.#####X#
+#XXX#XXX#XX#XXX#XXXXXXX#        X...#X#X#
+###X#X###X##X###X####### # ########.#X#X#
+#XXXXX#XXXX#XXXXXXXXXXX# # X....XX#.#XXX#
+###X###X########X###########.##.#X#.###X#
+#XXXXXXXXXXXXXXXXXX#.........#X.#X#.#XXX#
+###X###X######X#####.##########.###.###X#
+#X#X#XXXXXX#X#X#N..#...XXXX#X#..#...XX#X#
+#X#####X#X##X### X.#X#.#X#X#X#.##.###X###
+#XXXXXXX#XXXX#X###.#X#.#X#XXXX..X.XX#XXX#
+#####X####X#X#X#X#.#X#.########.#.#X#####
+#XXXXXXX#XX#XXXXX#.....XXXX#XXX.#.#XXXXX#
+#X#X#XXXXXXXXXXXX#X#X#XXX#XXXXX...#X#XXX#
+#X#X#X#X##X#######S###X#X#X###X######X###
+#X#X#X#XXXX#XXX#X#X#XXX#X#X#X#XX#XXX#XXX#
+#X###X####X#X###X#X#####X###X##X#X#X#X###
+#XXX#X#XXXXXXXXXX#X#X#XXXXX#XXXXXX#X#XXX#
+#X###X###X######X#X#X#X#X#####XX#X###X###
+#X#XXX#XXXX#XXXXX#XXX#X#XXXXXXXX#X#XXXXX#
+###X###X#X##X#X###X###########XX###X#X#X#
+#XXXXX#X#XX#X#XXXXXXXXXXXXXXXXXXXX#X#X#X#
+#########################################
