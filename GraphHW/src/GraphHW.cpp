@@ -1,7 +1,6 @@
 #include <iostream>
 #include <fstream>
 #include <vector>
-#include <queue>
 using namespace std;
 
 int N = 41;
@@ -81,6 +80,14 @@ struct Ocean{
 
 	bool isWall(Cell* c){
 		return matrix[c->x][c->y] == '#';
+	}
+
+	bool isNemo(Cell* c){
+		return *c==*nemo;
+	}
+
+	bool isMarlin(Cell* c){
+		return *c==*marlin;
 	}
 
 	bool isShark(Cell* c){

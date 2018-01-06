@@ -83,6 +83,14 @@
 //		return matrix[c->x][c->y] == '#';
 //	}
 //
+//	bool isNemo(Cell* c){
+//		return *c==*nemo;
+//	}
+//
+//	bool isMarlin(Cell* c){
+//		return *c==*marlin;
+//	}
+//
 //	bool isShark(Cell* c){
 //		return matrix[c->x][c->y] == 'S';
 //	}
@@ -167,7 +175,7 @@
 ///* METHODS TO BE COMPLETED */
 //
 //bool Ocean::dfsFrom(Cell* c){
-//	if(*c==*(nemo))
+//	if(isNemo(c))
 //		return true;
 //	if(isWall(c)||isMarked(c))
 //		return false;
@@ -193,7 +201,7 @@
 //	while(!toBeVisited.empty()){
 //		Cell* c = toBeVisited.front();
 //		toBeVisited.pop();
-//		if(*c==*nemo)
+//		if(isNemo(c))
 //			return;
 //		for(Cell* n : neighbors(c)){
 //			if(!isMarked(n)&&!isWall(n)){
@@ -211,7 +219,7 @@
 //	while(!toBeVisited.empty()){
 //		Cell* c = toBeVisited.front();
 //		toBeVisited.pop();
-//		if(*c==*nemo)
+//		if(isNemo(c))
 //			return;
 //		int cMark = getMark(c);
 //		for(Cell* n : neighbors(c)){
@@ -227,7 +235,7 @@
 //
 //void Ocean::backTrack(){
 //	Cell* c = nemo;
-//	while(!(*c == *marlin)){
+//	while(!isMarlin(c)){
 //		Cell* d = NULL;
 //		switch(getMark(c)){
 //		case WEST: d = west(c); break;
@@ -247,7 +255,7 @@
 //	while(!toBeVisited.empty()){
 //		Cell* c = toBeVisited.front();
 //		toBeVisited.pop();
-//		if(*c==*nemo)
+//		if(isNemo(c))
 //			break;
 //		int dir[] = {EAST, NORTH, WEST, SOUTH};
 //		int k = 0;
@@ -269,7 +277,7 @@
 //	while(!toBeVisited.empty()){
 //		Cell* c = toBeVisited.front();
 //		toBeVisited.pop_front();
-//		if(*c==*nemo)
+//		if(isNemo(c))
 //			break;
 //		int dir[] = {EAST, NORTH, WEST, SOUTH};
 //		int k = 0;
