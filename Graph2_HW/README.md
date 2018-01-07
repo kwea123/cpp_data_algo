@@ -2,7 +2,7 @@
 
 In this homework, the problem is to use Dijkstra's algorithm to find the shortest path with a large graph.
 The file `data/USA-road-d-NY.gr` contains the topology of the graph in the following image :
-![alt txt](Graph2_HW/data/NY_Metropolitan.png)
+![alt txt](data/NY_Metropolitan.png)
 
 It contains 264346 vertices and 733846 edges.
 
@@ -57,7 +57,7 @@ In bidirectional Dijkstra, two groups of circles, centerd in `source` and `desti
 and the algorithm finishes when the two circles intersect.
 
 The algorithm is illustrated below : 
-![alt txt](Graph2_HW/data/bidijkstra.png)
+![alt txt](data/bidijkstra.png)
 
 where the left image describes the original Dijkstra, and the right describes bidirectional Dijkstra.
 
@@ -106,5 +106,14 @@ Distance : 46834 in 1119 steps.
 
 Depending on how you count the iterations, the number of steps might be different, but it should be roughly half of that of the original Dijkstra.
 
+Now, change the source and the destination, and run again :
+```
+int source = 190637, destination = 187334;
+```
 
-ssss
+What do you observe?
+
+Exercise 3
+------------------
+Actually, the above algorithm is not totally correct. Look at the following image :
+![alt txt](data/terminaison-bidijkstra.png)
