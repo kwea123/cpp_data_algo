@@ -55,8 +55,7 @@ Basically, if edge (a, b) exists, then so does (b, a), and they have the same we
 Exercise 2
 -----------------------
 The original Dijkstra seems good enough, in that it found the distance already fast. However, since `source` and `destination` plays
-exactly the same role (important : this is only true in a **non-oriented** graph), we can actually use *two* Dijkstra algorithms, one
-starting from `source` and the other starting from `destination`. We call it **bidirectional Dijkstra**.
+exactly the same role (important : this is only true in a **non-oriented** graph), we can actually use **two** Dijkstra algorithms to accelerate the process, one starting from `source` and the other starting from `destination`. We call it **bidirectional Dijkstra**.
 
 The original Dijkstra draws concentric circles centered in `source`, and increases the radius gradually, until `destination` is included
 in the circle.
