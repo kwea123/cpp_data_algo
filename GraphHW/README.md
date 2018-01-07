@@ -254,3 +254,8 @@ to see the results. The results should be the same as `o2_avoid.txt` and `o3_avo
 
 # Answers
 Answers can be found in `GraphHW_answer.cpp`.
+
+# Credits
+The original problem belongs to http://www.enseignement.polytechnique.fr/informatique/INF411/
+
+Instructor : Jean-Christophe Filliâtre
