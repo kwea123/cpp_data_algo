@@ -1,0 +1,17 @@
+/*
+ * GraphHW.h
+ *
+ *  Created on: 2018¦~1¤ë5¤é
+ *      Author: kwea123
+ */
+
+#ifndef GRAPHHW_H_
+#define GRAPHHW_H_
+
+struct Ocean{
+	vector<vector<Cell*> > cells;;
+};
+
+
+
+#endif /* GRAPHHW_H_ */

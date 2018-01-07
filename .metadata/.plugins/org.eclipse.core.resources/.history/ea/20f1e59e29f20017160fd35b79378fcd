@@ -1,0 +1,38 @@
+#ifndef GRAPHHW_H_
+#define GRAPHHW_H_
+
+#include <vector>
+
+struct Ocean{
+
+};
+
+struct Cell{
+	int x, y;
+
+	Cell(int x, int y){
+		this->x = x;
+		this->y = y;
+	}
+
+	vector<Cell*> neighbors(Ocean* o){
+		vector<Cell*> v;
+		if(x>0)
+			v.push_back(o->cells[x-1][y]);
+		if(y>0)
+			v.push_back(o->cells[x][y-1]);
+		if(x<N-1)
+			v.push_back(o->cells[x+1][y]);
+		if(y<N-1)
+			v.push_back(o->cells[x][y+1]);
+		return v;
+	}
+
+	bool operator==(const Cell& b) const{
+		return x==b.x && y==b.y;
+	}
+
+};
+
+
+#endif /* GRAPHHW_H_ */

@@ -1,0 +1,14 @@
+#ifndef GRAPHHW_H_
+#define GRAPHHW_H_
+
+
+struct Ocean{
+
+};
+
+struct Cell{
+
+};
+
+
+#endif /* GRAPHHW_H_ */

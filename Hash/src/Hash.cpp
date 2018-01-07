@@ -137,6 +137,7 @@ int main() {
 //		}
 //		total++;
 //	}
+//	fin.close();
 
 	// count occurrence
 //	Pair* p = new Pair("it", "was");

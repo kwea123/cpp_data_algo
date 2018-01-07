@@ -1,0 +1,40 @@
+#ifndef GRAPHHW_H_
+#define GRAPHHW_H_
+
+#include <vector>
+
+struct Ocean;
+struct Cell;
+
+int N = 41;
+
+struct Ocean{
+	std::vector<std::vector<Cell*> > cells;
+	std::vector<std::string> matrix;
+
+	Ocean(std::vector<std::vector<Cell*> > cells, std::vector<std::string> matrix){
+		this->cells = cells;
+		this->matrix = matrix;
+	}
+
+	bool isWall(Cell*);
+};
+
+struct Cell{
+	int x, y;
+
+	Cell(int x, int y){
+		this->x = x;
+		this->y = y;
+	}
+
+	std::vector<Cell*> neighbors(Ocean*);
+
+	bool operator==(const Cell& b) const{
+		return x==b.x && y==b.y;
+	}
+
+};
+
+
+#endif /* GRAPHHW_H_ */

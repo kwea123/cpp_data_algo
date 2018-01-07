@@ -1,0 +1,137 @@
+#include <iostream>
+#include <list>
+#include <map>
+#include <set>
+#include <algorithm>
+using namespace std;
+
+struct AdjMatrix{
+	int n;
+	bool** M;
+
+	AdjMatrix(int n, bool** M){
+		this->n = n;
+		this->M = M;
+	}
+
+	bool hasEdge(int i, int j){
+		return M[i][j];
+	}
+
+	void addEdge(int i, int j){
+		M[i][j] = 1;
+	}
+
+	void removeEdge(int i, int j){
+		M[i][j] = 0;
+	}
+
+	list<int> neighbors(int i){
+		list<int> l;
+		for(int j=0;j<n;j++)
+			if(M[i][j])
+				l.push_back(j);
+		return l;
+	}
+
+};
+
+struct AdjList{
+	map<int, list<int>* > adj;
+
+	void addVertex(int i){
+		adj[i] = new list<int>();
+	}
+
+	void addEdge(int i, int j){
+		adj[i]->push_back(j);
+	}
+
+	bool hasEdge(int i, int j){
+		return find(adj[i]->begin(), adj[i]->end(), j) != adj[i]->end();
+	}
+
+	void removeEdge(int i, int j){
+		adj[i]->remove(j);
+	}
+
+};
+
+struct AdjSet{
+
+	map<int, set<int> > adj;
+
+	AdjSet(map<int, set<int> > adj){
+		this->adj = adj;
+	}
+
+	void addVertex(int i){
+		set<int> s;
+		adj[i] = s;
+	}
+
+	void addEdge(int i, int j){
+		adj[i].insert(j);
+	}
+
+	bool hasEdge(int i, int j){
+		return find(adj[i].begin(), adj[i].end(), j) != adj[i].end();
+	}
+
+	void removeEdge(int i, int j){
+		adj[i].erase(j);
+	}
+
+	set<int> vertices(){
+		set<int> s;
+		for(auto it : adj)
+			s.insert(it.first);
+		return s;
+	}
+
+	set<int> neighbors(int i){
+		return adj[i];
+	}
+
+	void dfs(int i, set<int>& visited, int count, map<int, int>& result){ //result stores the depth of discovery
+		if(visited.count(i))
+			return;
+		visited.insert(i);
+		result[i] = count++;
+		for(int j : neighbors(i))
+			dfs(j, visited, count, result);
+	}
+
+	bool existPath(int i, int j){
+		set<int> visited;
+		map<int, int> result;
+		dfs(2, visited, 0, result);
+		return visited.count(j)>0;
+	}
+};
+
+
+
+int main() {
+
+	map<int, set<int> > adj;
+	AdjSet* g = new AdjSet(adj);
+	g->addEdge(0, 3);
+	g->addEdge(1, 0);
+	g->addEdge(1, 4);
+	g->addEdge(2, 4);
+	g->addEdge(2, 5);
+	g->addEdge(3, 1);
+	g->addEdge(4, 3);
+
+	/* DFS */
+//	set<int> visited;
+//	map<int, int> result;
+//	g->dfs(2, visited, 0, result);
+//	for(auto it:result)
+//		cout<<it.first<<" "<<it.second<<endl;
+
+	cout<<g->existPath(1, 2);
+
+	return 0;
+}

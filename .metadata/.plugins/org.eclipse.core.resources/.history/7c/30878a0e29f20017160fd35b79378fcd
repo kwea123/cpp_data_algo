@@ -1,0 +1,11 @@
+#include <vector>
+#ifndef GRAPHHW_H_
+#define GRAPHHW_H_
+
+struct Ocean{
+	vector<vector<Cell*> > cells;
+};
+
+
+
+#endif /* GRAPHHW_H_ */

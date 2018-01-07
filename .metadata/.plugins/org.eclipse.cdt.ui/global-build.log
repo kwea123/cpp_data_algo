@@ -1,5 +1,5 @@
-22:12:18 **** Incremental Build of configuration Debug for project Sort ****
+20:30:16 **** Incremental Build of configuration Debug for project Graph2_HW ****
 Info: Internal Builder is used for build
-g++ -O0 -g3 -Wall -c -fmessage-length=0 -std=c++11 -o "src\\Sort.o" "..\\src\\Sort.cpp" 
-g++ -o Sort.exe "src\\Sort.o" 
-Info: Nothing to build for Sort
+g++ -O0 -g3 -Wall -c -fmessage-length=0 -std=c++11 -o "src\\Graph2_HW.o" "..\\src\\Graph2_HW.cpp" 
+g++ -o Graph2_HW.exe "src\\Graph2_HW.o" "src\\Graph2_HW_answer.o" 
+Info: Nothing to build for Graph2_HW
