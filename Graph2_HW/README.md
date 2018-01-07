@@ -161,6 +161,14 @@ Distance : 35478 in 621 steps.
 ```
 The last line shows that now the distance is computed correctly, and almost 2 times faster.
 
+Extra
+---------
+Find a path that realizes the minimal distance.
+
+Hint : We've seen how to do this in the original Dijkstra : use `map<V, V>` to record the antecedents...
+
+(answer not included)
+
 # Answers
 Answers can be found in `Graph2_HW_answer.cpp`.
 
