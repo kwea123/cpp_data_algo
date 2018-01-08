@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename resource &apos;DisjointHW/src/DisjointHW_answer&apos; to &apos;DisjointHW_answer.cpp&apos;" description="Rename resource &apos;DisjointHW_answer&apos;" flags="7" id="org.eclipse.ltk.core.refactoring.rename.resource" input="src/DisjointHW_answer" name="DisjointHW_answer.cpp" stamp="1515395952675" updateReferences="true"/>
+</session>
