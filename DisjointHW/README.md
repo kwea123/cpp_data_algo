@@ -112,6 +112,8 @@ Where `S` means "start" and `E` means "goal".
 
 Your generated labyrinth will very likely be different from this one as it is totally random, but you need to make sure that every two cells are connected by *one unique path*.
 
+You can change `N` in *line 47* to test different labyrinth sizes.
+
 Extra
 -------------
 uncomment this line in `main()`:
