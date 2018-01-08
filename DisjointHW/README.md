@@ -77,7 +77,7 @@ Exercise 3
 ------------------
 Now, we can merge the pairs in `pairs` using the disjoint set structure. To store the pairs between which the wall has been destructed, we have a variable `set<pair<pair<int, int>,pair<int, int> > > noWall` that stores the coordinates of these cells. More precisely, if `pp` belongs to `noWall`, then there is no wall between `cells[pp.first.first][pp.first.second]` and `cells[pp.second.first][pp.second.second]`.
 
-Fill in `void constructNoWalls()` which will fill in `noWall` with the coordinates of the pairs of cells (c1, c2) in `pairs` between which the wall has been destructed. 
+Fill in `void constructNoWalls()` which will fill in `noWall` with the coordinates of the pairs of cells (c1, c2) in `pairs` between which the wall has been destructed. Recall the process : for each pair (c1, c2) in `pairs`, we compare the roots of them, if they are equal, then we do nothing; otherwise, merge them and destruct the wall between c1 and c2.
 
 Finally, in `main()`, run
 ```
@@ -110,7 +110,7 @@ S   #   # #
 ```
 Where `S` means "start" and `E` means "goal".
 
-Your generated labyrinth will very likely be different from this one as it is totally random, but you need to make sure that every two cells are connected by *one unique path*.
+Your generated labyrinth will very likely be different from this one as it is totally random, but you need to make sure that every two empty cells are connected by *one unique path*.
 
 You can change `N` in *line 47* to test different labyrinth sizes.
 
@@ -122,7 +122,7 @@ uncomment this line in `main()`:
 ```
 This line prints out the number of walls that were destructed during the construction of the labyrinth.
 
-If you execute your program again, you will notice that this number remains the same no matter how the labyrinth looks like. In other words, the number of walls is a function of `N`, regardless of the labyrinth is constructed (i.e. regardless of the order of pairs, how we implement union-find, etc.).
+If you execute your program again, you will notice that this number remains the same no matter how the labyrinth looks like. In other words, the number of walls is a function of `N`, regardless of how the labyrinth is constructed (i.e. regardless of the order of pairs, how we implement union-find, etc.).
 
 Can you find this function?
 
