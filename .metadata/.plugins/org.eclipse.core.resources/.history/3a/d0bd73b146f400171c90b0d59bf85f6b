@@ -134,6 +134,5 @@
 //
 //	cout<<noWall.size()<<endl;
 //	/* answer : noWall.size() == N*N-1 */
-//  /* because a spanning tree of X nodes has exactly X-1 edges */
 //	return 0;
 //}
