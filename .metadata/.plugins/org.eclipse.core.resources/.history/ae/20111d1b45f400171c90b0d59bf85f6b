@@ -90,35 +90,18 @@
 //	}
 //}
 //
+///* HOMEWORK FILL IN THESE THREE METHODS */
+//
 //void Knuth(){
-//	for(int i=1;i<(int)pairs.size();i++){
-//		int j = rand()%(i+1); // j in 0..i
-//		pair<Cell*, Cell*> tmp = pairs[i];
-//		pairs[i] = pairs[j];
-//		pairs[j] = tmp;
-//	}
+//
 //}
 //
 //void constructPairs(){
-//	for(int i=0;i<N;i++)
-//		for(int j=0;j<N;j++){
-//			Cell* c = cells[i][j];
-//			if(i<N-1)
-//				pairs.push_back(pair<Cell*, Cell*>(c, cells[i+1][j]));
-//			if(j<N-1)
-//				pairs.push_back(pair<Cell*, Cell*>(c, cells[i][j+1]));
-//		}
+//
 //}
 //
 //void constructNoWalls(){
-//	for(pair<Cell*, Cell*> p : pairs)
-//		if(find(p.first)!=find(p.second)){
-//			uni(p.first, p.second);
-//			pair<pair<int, int>,pair<int, int> > pp;
-//			pp.first = pair<int, int>(p.first->x, p.first->y);
-//			pp.second = pair<int, int>(p.second->x, p.second->y);
-//			noWall.insert(pp);
-//		}
+//
 //}
 //
 //int main() {
@@ -132,7 +115,8 @@
 //
 //	printLabyrinth();
 //
-//	cout<<noWall.size()<<endl;
-	/* answer : noWall.size() == N*N-1 */
+////	cout<<noWall.size()<<endl;
+//	/* answer : noWall.size() == N*N-1 */
+//
 //	return 0;
 //}
