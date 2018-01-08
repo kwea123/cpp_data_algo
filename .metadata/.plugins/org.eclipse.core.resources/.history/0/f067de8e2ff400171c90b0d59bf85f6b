@@ -1,0 +1,99 @@
+#include <iostream>
+#include <vector>
+#include <time.h> //set time seed
+#include <stdlib.h>
+#include <set>
+using namespace std;
+
+struct Cell{
+	int x, y, rank;
+	Cell* root;
+
+	Cell(int x, int y){
+		this->x = x;
+		this->y = y;
+		this->rank = 0;
+		this->root = this;
+	}
+
+};
+
+Cell* find(Cell* x){
+	if(x->root!=x){ //path compression
+		Cell* root = find(x->root);
+		x->root = root;
+		return root;
+	}
+	return x;
+}
+
+void uni(Cell* x, Cell* y){
+	Cell* xRoot = find(x);
+	Cell* yRoot = find(y);
+
+	if(xRoot==yRoot)
+		return;
+
+	if(xRoot->rank < yRoot->rank)
+		xRoot->root = yRoot;
+	else if(xRoot->rank > yRoot->rank)
+		yRoot->root = xRoot;
+	else{
+		yRoot->root = xRoot;
+		xRoot->rank++;
+	}
+}
+
+void Knuth(vector<pair<Cell*, Cell*> >& a, int n){
+	for(int i=1;i<n;i++){
+		int j = rand()%(i+1); // j in 0..i
+		pair<Cell*, Cell*> tmp = a[i];
+		a[i] = a[j];
+		a[j] = tmp;
+	}
+}
+
+int main() {
+	srand(time(NULL));
+
+	int N = 20;
+	vector<vector<Cell*> > cells(N, vector<Cell*>(N));
+	vector<pair<Cell*, Cell*> > pairs;
+	set<pair<pair<int, int>,pair<int, int> > > noWall;
+
+	for(int i=0;i<N;i++)
+		for(int j=0;j<N;j++)
+			cells[i][j] = new Cell(i, j);
+
+	int totalP = 0;
+	for(int i=0;i<N;i++)
+		for(int j=0;j<N;j++){
+			Cell* c = cells[i][j];
+			if(i<N-1){
+				pairs.push_back(pair<Cell*, Cell*>(c, cells[i+1][j]));
+				totalP++;
+			}
+			if(j<N-1){
+				pairs.push_back(pair<Cell*, Cell*>(c, cells[i][j+1]));
+				totalP++;
+			}
+		}
+
+	Knuth(pairs, totalP);
+
+	for(pair<Cell*, Cell*> p : pairs)
+		if(find(p.first)!=find(p.second)){
+			uni(p.first, p.second);
+			pair<pair<int, int>,pair<int, int> > pp;
+			pp.first = pair<int, int>(p.first->x, p.first->y);
+			pp.second = pair<int, int>(p.second->x, p.second->y);
+			noWall.insert(pp);
+		}
+
+	for(auto pp : noWall){
+		cout<<pp.first.first<<" "<<pp.first.second<<","<<pp.second.first<<" "<<pp.second.second<<endl;
+	}
+	cout<<noWall.size();
+
+	return 0;
+}

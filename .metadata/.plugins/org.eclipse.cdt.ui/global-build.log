@@ -1,5 +1,5 @@
-20:30:16 **** Incremental Build of configuration Debug for project Graph2_HW ****
+13:48:12 **** Incremental Build of configuration Debug for project DisjointHW ****
 Info: Internal Builder is used for build
-g++ -O0 -g3 -Wall -c -fmessage-length=0 -std=c++11 -o "src\\Graph2_HW.o" "..\\src\\Graph2_HW.cpp" 
-g++ -o Graph2_HW.exe "src\\Graph2_HW.o" "src\\Graph2_HW_answer.o" 
-Info: Nothing to build for Graph2_HW
+g++ -O0 -g3 -Wall -c -fmessage-length=0 -std=c++11 -o "src\\DisjointHW.o" "..\\src\\DisjointHW.cpp" 
+g++ -o DisjointHW.exe "src\\DisjointHW.o" 
+Info: Nothing to build for DisjointHW

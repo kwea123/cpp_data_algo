@@ -1,0 +1,151 @@
+#include <iostream>
+#include <set>
+#include <vector>
+using namespace std;
+
+struct Node{
+	int rank;
+	Node* root;
+
+	Node(){
+		this->root = this;
+		this->rank = 0;
+	}
+
+};
+
+Node* find(Node* x){
+	if(x->root!=x){ //path compression
+		Node* root = find(x->root);
+		x->root = root;
+		return root;
+	}
+	return x;
+}
+
+void uni(Node* x, Node* y){
+	Node* xRoot = find(x);
+	Node* yRoot = find(y);
+
+	if(xRoot==yRoot)
+		return;
+
+	if(xRoot->rank < yRoot->rank)
+		xRoot->root = yRoot;
+	else if(xRoot->rank > yRoot->rank)
+		yRoot->root = xRoot;
+	else{
+		yRoot->root = xRoot;
+		xRoot->rank++;
+	}
+}
+
+set<Node*> classes(set<Node*> s){
+	set<Node*> res;
+	for(Node* n : s)
+		if(!res.count(n->root))
+			res.insert(n->root);
+	return res;
+}
+
+int nClasses(set<Node*> s){
+	return classes(s).size();
+}
+
+/*---Stone------*/
+struct Stone{
+	int x,y,rank,liberty,color;
+	Stone* root;
+
+	Stone(int x, int y, int color){
+		this->x = x;
+		this->y = y;
+		this->rank = 0;
+		this->liberty = 4;
+		this->color = color;
+		this->root = this;
+	}
+
+};
+
+Stone* find(Stone* x){
+	if(x->root!=x){ //path compression
+		Stone* root = find(x->root);
+		x->root = root;
+		return root;
+	}
+	return x;
+}
+
+void uni(Stone* x, Stone* y){
+	Stone* xRoot = find(x);
+	Stone* yRoot = find(y);
+
+	if(xRoot==yRoot)
+		return;
+
+	if(xRoot->rank < yRoot->rank)
+		xRoot->root = yRoot;
+	else if(xRoot->rank > yRoot->rank)
+		yRoot->root = xRoot;
+	else{
+		yRoot->root = xRoot;
+		xRoot->rank++;
+	}
+}
+
+struct Board{
+	const static int N = 19;
+	Stone* stones[N][N];
+	set<Stone*> groups;
+
+	Board(){
+		for(int i=0;i<N;i++)
+			for(int j=0;j<N;j++)
+				stones[i][j] = new Stone(i, j, -1); //color = -1 nothing
+	}
+
+	vector<Stone*> neighbors(Stone* s){
+		vector<Stone*> v;
+		if(s->x>0)
+			v.push_back(stones[s->x-1][s->y]);
+		if(s->y>0)
+			v.push_back(stones[s->x][s->y-1]);
+		if(s->x<N-1)
+			v.push_back(stones[s->x+1][s->y]);
+		if(s->y<N-1)
+			v.push_back(stones[s->x][s->y+1]);
+		return v;
+	}
+
+	void putStone(int x, int y, int color){ //color = 0 black 1 white
+		Stone* s = stones[x][y];
+		s->color = color;
+		bool containsNeighbor = false;
+		for(Stone* n : neighbors(s))
+			if(groups.count(n) && n->color==s->color){
+				uni(n, s);
+				containsNeighbor = true;
+			}
+		if(!containsNeighbor)
+			groups.insert(s);
+	}
+};
+
+int main() {
+//	Node* x1 = new Node();
+//	Node* x2 = new Node();
+//	Node* x3 = new Node();
+//	set<Node*> s;
+//	s.insert(x1);
+//	s.insert(x2);
+//	s.insert(x3);
+//	uni(x1,x2);
+//	uni(x1,x3);
+//	cout<<nClasses(s);
+
+	Board* b = new Board();
+	b->putStone(10, 10, 0);
+
+	return 0;
+}

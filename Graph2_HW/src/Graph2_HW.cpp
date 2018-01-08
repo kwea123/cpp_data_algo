@@ -97,128 +97,31 @@ struct Graph{
 		cout<<"Distance : "<<distances[destination]<<" in "<<i<<" steps."<<endl;
 	}
 
+	/* HOMEWORK TO BE COMPLETED LATER... */
 	void shortestPath_bi(V, V);
 	void shortestPath_bi_correct(V, V);
 
 };
 
+/* HOMEWORK */
 template <typename V>
 void Graph<V>::shortestPath_bi(V source, V destination){
-	set<V> visitedF, visitedB;
-	map<V, int> distancesF, distancesB;
-	priority_queue<Node<V> > qF, qB;
-	distancesF[source] = 0;
-	distancesB[destination] = 0;
-	Node<V> last(source, 0);
-	qF.push(last);
-	qB.push(Node<V>(destination, 0));
-
+	int d=0;
 	int i=0;
-	while(!visitedF.count(last.node)||!visitedB.count(last.node)){
-		if(i%2==0&&!qF.empty()){
-			last = qF.top();
-			qF.pop();
-			if(visitedF.count(last.node))
-				continue;
-			visitedF.insert(last.node);
-			for(V w : neighbors(last.node)){
-				int d = last.dist + edgeWeight(last.node, w);
-				// is it better then distances[w]?
-				if(!distancesF.count(w)||d<distancesF[w]){ //yes, it's shorter
-					distancesF[w] = d;
-					qF.push(Node<V>(w, d));
-				}
-			}
-		} else if(i%2==1&&!qB.empty()){
-			last = qB.top();
-			qB.pop();
-			if(visitedB.count(last.node))
-				continue;
-			visitedB.insert(last.node);
-			for(V w : neighbors(last.node)){
-				int d = last.dist + edgeWeight(last.node, w);
-				// is it better then distances[w]?
-				if(!distancesB.count(w)||d<distancesB[w]){ //yes, it's shorter
-					distancesB[w] = d;
-					qB.push(Node<V>(w, d));
-				}
-			}
-		}
-		i++;
-	}
-	int d = distancesF[last.node]+distancesB[last.node];
 	cout<<"Distance : "<<d<<" in "<<i<<" steps."<<endl;
 }
 
 template <typename V>
 void Graph<V>::shortestPath_bi_correct(V source, V destination){
-	set<V> visitedF, visitedB;
-	map<V, int> distancesF, distancesB;
-	priority_queue<Node<V> > qF, qB;
-	distancesF[source] = 0;
-	distancesB[destination] = 0;
-	Node<V> last(source, 0);
-	qF.push(last);
-	qB.push(Node<V>(destination, 0));
-
 	int i=0;
-	while(!visitedF.count(last.node)||!visitedB.count(last.node)){
-		if(i%2==0&&!qF.empty()){
-			last = qF.top();
-			qF.pop();
-			if(visitedF.count(last.node))
-				continue;
-			visitedF.insert(last.node);
-			for(V w : neighbors(last.node)){
-				int d = last.dist + edgeWeight(last.node, w);
-				// is it better then distances[w]?
-				if(!distancesF.count(w)||d<distancesF[w]){ //yes, it's shorter
-					distancesF[w] = d;
-					qF.push(Node<V>(w, d));
-				}
-			}
-		} else if(i%2==1&&!qB.empty()){
-			last = qB.top();
-			qB.pop();
-			if(visitedB.count(last.node))
-				continue;
-			visitedB.insert(last.node);
-			for(V w : neighbors(last.node)){
-				int d = last.dist + edgeWeight(last.node, w);
-				// is it better then distances[w]?
-				if(!distancesB.count(w)||d<distancesB[w]){ //yes, it's shorter
-					distancesB[w] = d;
-					qB.push(Node<V>(w, d));
-				}
-			}
-		}
-		i++;
-	}
-	int d = distancesF[last.node]+distancesB[last.node];
-	// pq to vector
-	vector<V> qBv, qFv;
-	while(!qF.empty()){
-		Node<V> n = qF.top();
-		qF.pop();
-		if(visitedB.count(n.node))
-			qFv.push_back(n.node);
-	}
-	while(!qB.empty()){
-		Node<V> n = qB.top();
-		qB.pop();
-		if(visitedF.count(n.node))
-			qBv.push_back(n.node);
-	}
-
-	for(V i : qBv)
-		for(V j : qFv)
-			if(hasEdge(i,j))
-				d = min(d, distancesF[i]+edgeWeight(i,j)+distancesB[j]);
-
+	int d=0;
 	cout<<"Distance : "<<d<<" in "<<i<<" steps."<<endl;
 }
 
 void readGraph(string fileName, Graph<int>& g){
+
+	/* DO NOT MODIFY THIS */
+
 	ifstream fin(fileName);
 	string s;
 	int i, j, k;
@@ -240,7 +143,6 @@ void readGraph(string fileName, Graph<int>& g){
 
 int main() {
 	Graph<int> g;
-
 	readGraph("data/USA-road-d-NY.gr", g);
 
 	int source = 190635, destination = 187333;
