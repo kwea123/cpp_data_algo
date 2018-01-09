@@ -4,7 +4,9 @@ In the lecture, we used an array and backtracking method to solve N queen proble
 
 In this homework, we propose a way, using bit manipulations, to decrease the number of places that we need to check.
 
-Look at the following graph for N=8: 
+Look at the following graph for N=8:
+
+![alt](queens.png)
 
 We can eliminate the places by checking three ways :
 1.  There is already a queen on the same row.
@@ -62,13 +64,15 @@ Hint : you need to use `<<` and `>>`, which allows to shift a number one bit to 
 
 Finally, we need to subtract `d` from `e` to consider the next valid place in the current row. (cf. lecture "Advanced/BIT")
 
+This line `e -= d;` is done for you.
+
 Exercise 4
 -----------
 The method `countSolutionsRec` is now done. We pass to `int countSolutions2(int n)` which actually computes the total number of solutions for `n` queens by calling `countSolutionsRec(a, b, c)`.
 
 The choice of `b=c=0` is obvious, since initially no place is prohibited (diagonally or even vertically).
 
-As there is no queen initially on the board, `a` should contains all *1*'s, indicating that every place is OK to put a queen.
+As there is no queen initially on the board, `a` should contains all *1*'s, indicating that every place in the first row is OK to put a queen.
 
 Fill in `a` now.
 
@@ -86,7 +90,7 @@ By default, `N=8`, so you should see :
 Number of solutions for 8 queens : 92
 ```
 
-Change `N` in *line 5* to `15`, and run the program again. You should see :
+Change `N` in *line 5* to `15`, and run the program again. You should see (almost instantly):
 ```
 Number of solutions for 15 queens : 2279184
 ```
