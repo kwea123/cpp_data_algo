@@ -185,6 +185,24 @@ int LCA(vector<int> L, vector<int> E, vector<int> H, int t1, int t2){
 	return E[bit_rmq.RMQ(H[t1], H[t2])];
 }
 
+int N = 15;
+
+
+
+int countSolutionsRec(int a, int b, int c) {
+	if (a == 0) return 1;
+	int f = 0, e = a & ~b & ~c;
+	while (e != 0) {
+		int d = e & -e;
+		f += countSolutionsRec(a - d, (b + d) << 1, (c + d) >> 1);
+		e -= d;
+	}
+	return f;
+}
+
+int countSolutions(int n) {
+	return countSolutionsRec(~(~0 << n), 0, 0);
+}
 
 int main() {
 
@@ -247,6 +265,8 @@ int main() {
 //	int t1 = 9, t2 = 12;
 //
 //	cout<<"The LCA of "<<t1<<" and "<<t2<<" is "<<LCA(L, E, H, 9, 12)<<endl;
+
+//	cout<<countSolutions(15)<<endl;
 
 	return 0;
 }

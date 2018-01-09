@@ -248,5 +248,7 @@ int main() {
 //
 //	cout<<"The LCA of "<<t1<<" and "<<t2<<" is "<<LCA(L, E, H, 9, 12)<<endl;
 
+//	cout<<countSolutions(15)<<endl;
+
 	return 0;
 }

@@ -2,7 +2,7 @@
 #include <iostream>
 using namespace std;
 
-int N = 15;
+int N = 8;
 
 bool check(int* col, int r){
 	for(int q=0;q<r;q++)
@@ -26,17 +26,17 @@ int countSolutions1(int* col, int r){
 int countSolutionsRec(int a, int b, int c) {
 	if (a == 0) return 1;
 	int f = 0;
-	int e; //fill in here
+	int e = a & ~b & ~c;
 	while (e != 0) {
-		int d; //fill in here
-		f += countSolutionsRec(??,??,??); //fill in a, b, c here
+		int d = e & -e;
+		f += countSolutionsRec(a - d, (b + d) << 1, (c + d) >> 1);
 		e -= d;
 	}
 	return f;
 }
 
 int countSolutions2(int n) {
-	return countSolutionsRec(??, 0, 0); //fill in a here
+	return countSolutionsRec(~(~0 << n), 0, 0);
 }
 
 int main() {
