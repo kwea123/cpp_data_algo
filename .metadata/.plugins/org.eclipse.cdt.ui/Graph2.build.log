@@ -1,1 +1,7 @@
-Info: Nothing to build for Graph2
+23:45:26 **** Rebuild of configuration Debug for project Graph2 ****
+Info: Internal Builder is used for build
+g++ -O0 -g3 -Wall -c -fmessage-length=0 -std=c++11 -o "src\\Graph2.o" "..\\src\\Graph2.cpp" 
+g++ -o Graph2.exe "src\\Graph2.o" 
+
+23:45:33 Build Finished (took 6s.328ms)
+

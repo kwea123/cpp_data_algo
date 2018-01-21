@@ -1,0 +1,128 @@
+#include <iostream>
+#include <map>
+#include <set>
+#include <queue>
+#include <math.h>
+using namespace std;
+
+template <typename V>
+struct FlowGraph{
+
+	V s, t;
+	map<V, set<V> > adj;
+	map<pair<V, V>, int> edgeWeights;
+
+	void addVertex(V v){
+		set<V> s;
+		adj[v] = s;
+	}
+
+	void addEdge(V i, V j, int d){
+		adj[i].insert(j);
+		pair<V, V> p(i,j);
+		edgeWeights[p] = d;
+	}
+
+	bool hasEdge(V i, V j){
+		return find(adj[i].begin(), adj[i].end(), j) != adj[i].end();
+	}
+
+	void removeEdge(V i, V j){
+		adj[i].erase(j);
+	}
+
+	int edgeWeight(V i, V j){
+		pair<V, V> p(i,j);
+		return edgeWeights[p];
+	}
+
+	void setEdgeWeight(V i, V j, int d){
+		pair<V, V> p(i,j);
+		edgeWeights[p] = d;
+	}
+
+	set<V> vertices(){
+		set<V> s;
+		for(auto it : adj)
+			s.insert(it.first);
+		return s;
+	}
+
+	set<V> neighbors(V i){
+		return adj[i];
+	}
+
+	int maxflow(){
+		int flow = 0;
+		queue<V> q;
+		map<V, V> visited;
+		q.push(s);
+		visited[s] = s;
+		while(!q.empty()){
+			V j = q.front();
+			if(j==t)
+				break;
+			q.pop();
+			for(V k : neighbors(j))
+				if(!visited.count(k)){
+					q.push(k);
+					visited[k] = j;
+				}
+		}
+		V parent = t;
+		int bottleneck = 1e8;
+		while(parent!=s){
+			bottleneck = min(bottleneck, edgeWeight(visited[parent], parent));
+			parent = visited[parent];
+		}
+		flow += bottleneck;
+		parent = t;
+		while(parent!=s){
+			setEdgeWeight(visited[parent], parent, edgeWeight(visited[parent], parent)-bottleneck);
+			setEdgeWeight(parent, visited[parent], edgeWeight(parent, visited[parent])+bottleneck);
+		}
+		return flow;
+	}
+
+	void bfs(int i, queue<int>& q, set<int>& visited){
+		q.push(i);
+		visited.insert(i);
+		while(!q.empty()){
+			int j = q.front();
+			q.pop();
+			for(int k : neighbors(j))
+				if(!visited.count(k)){
+					q.push(k);
+					visited.insert(k);
+				}
+		}
+	}
+
+};
+
+int main() {
+	FlowGraph<int> g;
+	for(int i=0;i<8;i++)
+		g.addVertex(i);
+	g.s = 0;
+	g.t = 7;
+	g.addEdge(0, 1, 10);
+	g.addEdge(0, 2, 5);
+	g.addEdge(0, 3, 15);
+	g.addEdge(1, 2, 4);
+	g.addEdge(1, 4, 9);
+	g.addEdge(1, 5, 15);
+	g.addEdge(2, 3, 4);
+	g.addEdge(2, 5, 8);
+	g.addEdge(3, 6, 16);
+	g.addEdge(4, 5, 15);
+	g.addEdge(4, 7, 10);
+	g.addEdge(5, 6, 15);
+	g.addEdge(5, 7, 10);
+	g.addEdge(6, 2, 6);
+	g.addEdge(6, 7, 10);
+
+	g.maxflow();
+
+	return 0;
+}

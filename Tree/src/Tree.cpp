@@ -34,21 +34,21 @@ list<string> inorder(Tree* t){
 	return res;
 }
 
-void inorder(Tree* t, list<string>* res){
+void inorder(Tree* t, list<string>& res){
 	if(t==NULL)
 		return;
 	inorder(t->left, res);
-	res->push_back(t->value);
+	res.push_back(t->value);
 	inorder(t->right, res);
 }
 
-void BFS(Tree* t, list<string>* res){
+void BFS(Tree* t, list<string>& res){
 	queue<Tree*> q;
 	q.push(t);
 	while (!q.empty())
 	{
 		Tree* p = q.front(); q.pop();
-		res->push_back(p->value);
+		res.push_back(p->value);
 		if (p->left)  q.push(p->left);
 		if (p->right) q.push(p->right);
 	}
@@ -205,7 +205,7 @@ AVL* balance(AVL* b){
 }
 
 int main() {
-//	Tree* t = new Tree(new Tree(NULL, "B", NULL), "A", new Tree (new Tree(NULL, "D", NULL), "C", NULL));
+	Tree* t = new Tree(new Tree(NULL, "B", NULL), "A", new Tree (new Tree(NULL, "D", NULL), "C", NULL));
 
 	/* NAIVE INORDER */
 //	inorderTraversal(t);
@@ -217,9 +217,8 @@ int main() {
 //	}
 
 	/* LINEAR INORDER */
-//
 //	list<string> l;
-//	inorder(t, &l);
+//	inorder(t, l);
 //	while(!l.empty()){
 //		cout<<l.front()<<" ";
 //		l.pop_front();
@@ -227,7 +226,7 @@ int main() {
 
 	/* BFS */
 //	list<string> l;
-//	BFS(t, &l);
+//	BFS(t, l);
 //	while(!l.empty()){
 //		cout<<l.front()<<" ";
 //		l.pop_front();

@@ -133,7 +133,7 @@ struct Singly{
 		return this->next->contains(v);
 	}
 
-	int get(int i){
+	Singly* get(int i){
 		int ii = 0;
 		Singly* ptr = this;
 		while(ii<i){
@@ -142,15 +142,47 @@ struct Singly{
 			if(ptr==NULL)
 				throw invalid_argument("index larger than the length");
 		}
-		return ptr->x;
+		return ptr;
 	}
 
-	void insert(Singly* s, int i){
-		//homework
+	Singly* insert(Singly* s, int i){
+		if(i>this->size())
+			return NULL;
+		if(i==0){
+			Singly* ptr = s;
+			while(ptr->next != NULL)
+				ptr = ptr->next;
+			ptr->next = this;
+			return s;
+		}
+		Singly* prev = get(i-1);
+		Singly* next = prev->next;
+		prev->next = s;
+		while(s->next != NULL)
+			s = s->next;
+		s->next = next;
+		return this;
 	}
 
-	void remove(int i){
-		//homework
+	Singly* remove(int i){
+		if(i>this->size())
+			return NULL;
+		if(i==0)
+			return this->next;
+		Singly* prev = get(i-1);
+		Singly* next = prev->next;
+		prev->next = next->next;
+		delete[] next;
+		return this;
+	}
+
+	void print(){
+		Singly* ptr = this;
+		while(ptr != NULL){
+			cout<<ptr->x<<" ";
+			ptr = ptr->next;
+		}
+		cout<<endl;
 	}
 };
 
@@ -171,8 +203,34 @@ bool hasCycle(Singly* s){
 	return true;
 }
 
-int josephus(int n, int m){
-	//homework
+int josephus(int n, int m){ //n>=2 m<n
+	Singly* last = new Singly(n, NULL);
+	Singly* s = new Singly(n-1, last);
+	for(int i=n-2;i>=1;i--)
+		s = new Singly(i, s);
+	last->next = s;
+	Singly* cur = s;
+	Singly* prev = last;
+	int size = n;
+	while(size>1){
+		for(int i=0;i<m-1;i++){
+			cur = cur->next;
+			prev = prev->next;
+		}
+		prev->next = cur = cur->next; //remove cur node
+		size--;
+	}
+	return cur->x;
+}
+
+int josephusDP(int n, int m){
+	int* dp = new int[n]();
+	dp[1] = 0;
+	for(int i=2;i<=n;i++)
+		dp[i] = (dp[i-1]+m)%i;
+	int r = dp[n]+1;
+	delete[] dp;
+	return r;
 }
 
 int main() {
@@ -216,17 +274,31 @@ int main() {
 //	s = new Singly(4, s);
 //	cout<<s->size()<<endl;
 //	cout<<s->contains(2)<<endl;
-//	cout<<s->get(2)<<endl;
+//	cout<<s->get(2)->x<<endl;
+//
+//	Singly* s2 = new Singly(2, NULL);
+//	s2 = new Singly(7, s2);
+//	s = s->insert(s2, 1);
+//	s->print();
+//
+//	s = s->remove(2);
+//	s->print();
+//	s = s->remove(0);
+//	s->print();
 ////	cout<<s->get(6)<<endl; //exception here
 
 	/* CYCLIC LIST */
-	Singly* s4 = new Singly(4, NULL);
-	Singly* s2 = new Singly(2, new Singly(3, s4));
-	Singly* s0 = new Singly(0, new Singly(1, s2));
-
-	s4->next = s2;
+//	Singly* s4 = new Singly(4, NULL);
+//	Singly* s2 = new Singly(2, new Singly(3, s4));
+//	Singly* s0 = new Singly(0, new Singly(1, s2));
+//
+//	s4->next = s2;
 
 //	cout<<hasCycle(s0)<<endl; //floyd's cycle detection
+
+	/* JOSEPHUS */
+//	cout<<josephus(41, 3); //correct answer is 31
+	cout<<josephusDP(41,3);
 
 	return 0;
 }
