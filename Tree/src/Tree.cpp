@@ -54,6 +54,18 @@ void BFS(Tree* t, list<string>& res){
 	}
 }
 
+int size(Tree* t){
+	if(t==NULL)
+		return 0;
+	return 1+size(t->left)+size(t->right);
+}
+
+int height(Tree* t){
+	if(t==NULL)
+		return 0;
+	return 1+max(height(t->left), height(t->right));
+}
+
 struct BST{
 	string value;
 	BST* left;
@@ -135,7 +147,7 @@ struct AVL{
 		this->left = left;
 		this->value = value;
 		this->right = right;
-		this->height = 1+max(left->height, right->height);
+		this->height = 1+max(left==NULL?0:left->height, right==NULL?0:right->height);
 	}
 };
 
@@ -165,8 +177,8 @@ AVL* rotateLeft(AVL* b){
 	AVL* r = b->right;
 	b->right = r->left;
 	r->left = b;
-	b->height = 1 + max(b->left->height, b->right->height);
-	r->height = 1 + max(r->left->height, r->right->height);
+	b->height = 1 + max(b->left==NULL?0:b->left->height, b->right==NULL?0:b->right->height);
+	r->height = 1 + max(r->left==NULL?0:r->left->height, r->right==NULL?0:r->right->height);
 	return r;
 }
 
@@ -174,14 +186,14 @@ AVL* rotateRight(AVL* b){
 	AVL* l = b->left;
 	b->left = l->right;
 	l->right = b;
-	b->height = 1 + max(b->left->height, b->right->height);
-	l->height = 1 + max(l->left->height, l->right->height);
+	b->height = 1 + max(b->left==NULL?0:b->left->height, b->right==NULL?0:b->right->height);
+	l->height = 1 + max(l->left==NULL?0:l->left->height, l->right==NULL?0:l->right->height);
 	return l;
 }
 
 AVL* balance(AVL* b){
 	AVL *l = b->left, *r = b->right;
-	int hl = l->height, hr = r->height;
+	int hl = l==NULL?0:l->height, hr = r==NULL?0:r->height;
 	if(hl>hr+1){ //imbalance from the left child
 		AVL *ll = l->left, *lr = l->right;
 		if (ll->height >= lr->height) //imbalance from the left child of the left child
@@ -203,6 +215,71 @@ AVL* balance(AVL* b){
 		return b;
 	}
 }
+
+AVL* add(AVL* b, string x){
+	if(b==NULL)
+		return new AVL(NULL, x, NULL);
+	int c = x.compare(b->value);
+	if(c<0){
+		b->left = add(b->left, x);
+	} else if(c>0){
+		b->right = add(b->right, x);
+	}
+	return b;
+}
+
+AVL* removeMin(AVL* b){
+	if(b->left==NULL) //the min is the root
+		return b->right;
+	b->left = removeMin(b->left);
+	return b;
+}
+
+AVL* remove(AVL* b, string x){
+	if(b==NULL)
+		return NULL;
+	int c = x.compare(b->value);
+	if(c<0){
+		b->left = remove(b->left, x);
+	} else if(c>0) {
+		b->right = remove(b->right, x);
+	} else { //if x==b->value, i.e. we want to remove the root
+		if(b->right==NULL)
+			return b->left;
+		// do root = min(R) and removeMin
+		b->value = getMin(b->right);
+		b->right = removeMin(b->right);
+	}
+	return b;
+}
+
+struct AVLSet{
+	AVL* avl;
+	AVLSet(){
+		avl = NULL;
+	}
+
+	bool empty(){
+		return avl==NULL;
+	}
+
+	void insert(string x){
+		avl = add(avl, x);
+		avl = balance(avl);
+	}
+
+	void erase(string x){
+		if(!has(x))
+			return;
+		avl = remove(avl, x);
+		avl = balance(avl);
+	}
+
+	bool has(string x){
+		return contains(avl, x);
+	}
+
+};
 
 int main() {
 	Tree* t = new Tree(new Tree(NULL, "B", NULL), "A", new Tree (new Tree(NULL, "D", NULL), "C", NULL));
@@ -232,8 +309,19 @@ int main() {
 //		l.pop_front();
 //	}
 
+//	cout<<size(t)<<" "<<height(t)<<endl;
+
 	/* BST */
 
+	/* AVLSet */
+	AVLSet s;
+	s.insert("A");
+	s.insert("B");
+	s.insert("C");
+	s.insert("D");
+	cout<<s.has("D")<<endl;
+	s.erase("D");
+	cout<<s.has("D")<<endl;
 
 	return 0;
 }
