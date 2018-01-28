@@ -106,7 +106,20 @@ struct IC{
 
 int N = 15;
 int matrix[15][15];
-map<set<int>, int> m;
+
+map<int, int> m;
+int f(int i, int c) {
+	if (i == N) return 0;
+	if (m.count(c)) return m[c];
+	int s = 0;
+	for (int j = 0; j < N ; j++){
+		int cj = 1<<j;
+		if (c&cj)
+			s = max(s, matrix[i][j] + f(i + 1, c&~cj));
+	}
+	m[c] = s;
+	return s;
+}
 
 int main() {
 
@@ -172,31 +185,11 @@ int main() {
 
 
 	/* HOMEWORK */
-//	ifstream fin("matrix.txt");
-//	for(int i=0;i<N;i++)
-//		for(int j=0;j<N;j++)
-//			fin>>matrix[i][j];
-//
-//	set<int> s;
-//	map<set<int>, int> newM;
-//	m[s] = 0;
-//	int t = 0;
-//	for(int k=0;k<N;k++){
-//		newM.clear();
-//		for(auto it : m){
-//			for(int i=0;i<N;i++){
-//				set<int> scopy = it.first;
-//				if(!scopy.count(i)){
-//					scopy.insert(i);
-//					newM[scopy] = max(newM[scopy], matrix[N-k-1][i] + it.second);
-//				}
-//			}
-//		}
-//		m = newM;
-//	}
-//	for(auto it : m)
-//		cout<<it.second<<endl;
-//	cout<<"number of ops : "<<t<<endl;
+	ifstream fin("matrix.txt");
+	for(int i=0;i<N;i++)
+		for(int j=0;j<N;j++)
+			fin>>matrix[i][j];
+	cout<<f(0, ~(~0 << N));
 
 	return 0;
 

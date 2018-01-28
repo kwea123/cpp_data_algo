@@ -99,6 +99,17 @@ bool contains(BST* b, string v){
 	return false;
 }
 
+bool containsR(BST* b, string v){
+	if(b==NULL)
+		return false;
+	int c = v.compare(b->value);
+	if(c==0)
+		return true;
+	if(c<0)
+		return containsR(b->left, v);
+	return containsR(b->right, v);
+}
+
 BST* add(BST* b, string x){
 	if(b==NULL)
 		return new BST(NULL, x, NULL);
@@ -302,26 +313,26 @@ int main() {
 //	}
 
 	/* BFS */
-//	list<string> l;
-//	BFS(t, l);
-//	while(!l.empty()){
-//		cout<<l.front()<<" ";
-//		l.pop_front();
-//	}
+	list<string> l;
+	BFS(t, l);
+	while(!l.empty()){
+		cout<<l.front()<<" ";
+		l.pop_front();
+	}
 
 //	cout<<size(t)<<" "<<height(t)<<endl;
 
 	/* BST */
 
 	/* AVLSet */
-	AVLSet s;
-	s.insert("A");
-	s.insert("B");
-	s.insert("C");
-	s.insert("D");
-	cout<<s.has("D")<<endl;
-	s.erase("D");
-	cout<<s.has("D")<<endl;
+//	AVLSet s;
+//	s.insert("A");
+//	s.insert("B");
+//	s.insert("C");
+//	s.insert("D");
+//	cout<<s.has("D")<<endl;
+//	s.erase("D");
+//	cout<<s.has("D")<<endl;
 
 	return 0;
 }

@@ -1,1 +1,7 @@
-Info: Nothing to build for Tree
+16:05:56 **** Incremental Build of configuration Debug for project Tree ****
+Info: Internal Builder is used for build
+g++ -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\Tree.o" "..\\src\\Tree.cpp" 
+g++ -o Tree.exe "src\\Tree.o" 
+
+16:06:00 Build Finished (took 4s.800ms)
+
