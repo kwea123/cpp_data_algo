@@ -161,11 +161,11 @@ int main() {
 //	cout<<endl;
 
 	/* QUICK SORT */
-//	cout<<"Quick sort!"<<endl;
-//	quickSort(a, 10);
-//	for(int i=0;i<10;i++)
-//		cout<<a[i]<<" ";
-//	cout<<endl;
+	cout<<"Quick sort!"<<endl;
+	quickSort(a, 10);
+	for(int i=0;i<10;i++)
+		cout<<a[i]<<" ";
+	cout<<endl;
 
 //	sort(a, a+10);
 //	for(int i=0;i<10;i++)
