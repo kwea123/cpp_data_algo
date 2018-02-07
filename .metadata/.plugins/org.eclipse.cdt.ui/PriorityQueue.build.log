@@ -1,7 +1,7 @@
-15:22:23 **** Incremental Build of configuration Debug for project PriorityQueue ****
+16:29:50 **** Incremental Build of configuration Debug for project PriorityQueue ****
 Info: Internal Builder is used for build
 g++ -O0 -g3 -Wall -c -fmessage-length=0 -std=c++11 -o "src\\PriorityQueue.o" "..\\src\\PriorityQueue.cpp" 
 g++ -o PriorityQueue.exe "src\\PriorityQueue.o" 
 
-15:22:25 Build Finished (took 2s.555ms)
+16:29:58 Build Finished (took 8s.263ms)
 

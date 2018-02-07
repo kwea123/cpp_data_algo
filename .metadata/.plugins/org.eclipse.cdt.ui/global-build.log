@@ -1,5 +1,9 @@
-11:51:10 **** Incremental Build of configuration Debug for project Hash ****
+15:42:17 **** Incremental Build of configuration Debug for project Sort ****
 Info: Internal Builder is used for build
-g++ -O0 -g3 -Wall -c -fmessage-length=0 -std=c++11 -o "src\\Hash.o" "..\\src\\Hash.cpp" 
-g++ -o Hash.exe "src\\Hash.o" 
-Info: Nothing to build for Hash
+g++ -O0 -g3 -Wall -c -fmessage-length=0 -std=c++11 -o "src\\Sort.o" "..\\src\\Sort.cpp" 
+g++ -o Sort.exe "src\\Sort.o" 
+Info: Nothing to build for Sort
+15:58:12 **** Incremental Build of configuration Debug for project Sort ****
+Info: Internal Builder is used for build
+g++ -O0 -g3 -Wall -c -fmessage-length=0 -std=c++11 -o "src\\Sort.o" "..\\src\\Sort.cpp" 
+g++ -o Sort.exe "src\\Sort.o" 

@@ -292,8 +292,17 @@ struct AVLSet{
 
 };
 
+BST* LCA(BST* root, string x1, string x2){
+	if (root == NULL) return NULL;
+	if (root->value > x1 && root->value > x2)
+		return LCA(root->left, x1, x2);
+	if (root->value < x1 && root->value < x2)
+		return LCA(root->right, x1, x2);
+	return root;
+}
+
 int main() {
-	Tree* t = new Tree(new Tree(NULL, "B", NULL), "A", new Tree (new Tree(NULL, "D", NULL), "C", NULL));
+//	Tree* t = new Tree(new Tree(NULL, "B", NULL), "A", new Tree (new Tree(NULL, "D", NULL), "C", NULL));
 
 	/* NAIVE INORDER */
 //	inorderTraversal(t);
@@ -313,16 +322,23 @@ int main() {
 //	}
 
 	/* BFS */
-	list<string> l;
-	BFS(t, l);
-	while(!l.empty()){
-		cout<<l.front()<<" ";
-		l.pop_front();
-	}
+//	list<string> l;
+//	BFS(t, l);
+//	while(!l.empty()){
+//		cout<<l.front()<<" ";
+//		l.pop_front();
+//	}
 
 //	cout<<size(t)<<" "<<height(t)<<endl;
 
 	/* BST */
+	BST* l = new BST(new BST(NULL, "D", NULL), "A", new BST(NULL, "E", NULL));
+	BST* rl = new BST(new BST(NULL, "L", NULL), "M", NULL);
+	BST* rr = new BST(new BST(NULL, "P", NULL), "X", NULL);
+	BST* r = new BST(rl, "O", rr);
+	BST* b = new BST(l, "G", r);
+	cout<<LCA(b, "D", "L")->value<<endl; //G
+	cout<<LCA(b, "P", "L")->value<<endl; //O
 
 	/* AVLSet */
 //	AVLSet s;
@@ -333,6 +349,7 @@ int main() {
 //	cout<<s.has("D")<<endl;
 //	s.erase("D");
 //	cout<<s.has("D")<<endl;
+
 
 	return 0;
 }

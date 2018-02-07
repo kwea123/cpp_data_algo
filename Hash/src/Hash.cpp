@@ -87,6 +87,24 @@ string randomElement(vector<string>* v) {
 
 /* HOMEWORK */
 
+long long** combi(int N){
+	long long** dp;
+	dp = new long long*[N+1];
+	for(int i=0;i<=N;i++)
+		dp[i] = new long long[N+1]();
+	dp[1][0] = dp[1][1] = 1;
+	for(int i=2;i<=N;i++)
+		for(int j=0;j<=i;j++)
+			dp[i][j] = (j>0?dp[i-1][j-1]:0) + dp[i-1][j];
+	return dp;
+}
+
+long long choose(long long n, long long k){
+	if(k==0)
+		return 1;
+	return (n * choose(n - 1, k - 1)) / k;
+}
+
 struct IC{
 	int i;
 	set<int> c;
@@ -183,8 +201,13 @@ int main() {
 //	}
 //	cout<<m[80];
 
-
 	/* HOMEWORK */
+
+	long long **dp = combi(50);
+	cout<<dp[50][25]<<endl;
+
+	cout<<choose(50, 25)<<endl;
+
 //	ifstream fin("matrix.txt");
 //	for(int i=0;i<N;i++)
 //		for(int j=0;j<N;j++)
