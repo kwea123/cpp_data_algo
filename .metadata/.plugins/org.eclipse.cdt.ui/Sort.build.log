@@ -1,7 +1,7 @@
-15:58:12 **** Incremental Build of configuration Debug for project Sort ****
+12:08:55 **** Incremental Build of configuration Debug for project Sort ****
 Info: Internal Builder is used for build
 g++ -O0 -g3 -Wall -c -fmessage-length=0 -std=c++11 -o "src\\Sort.o" "..\\src\\Sort.cpp" 
 g++ -o Sort.exe "src\\Sort.o" 
 
-15:58:19 Build Finished (took 6s.921ms)
+12:08:57 Build Finished (took 2s.336ms)
 

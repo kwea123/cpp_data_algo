@@ -3,6 +3,7 @@
 #include <stdlib.h>
 #include <list>
 #include <algorithm>
+#include <map>
 using namespace std;
 
 void Knuth(int* a, int n){
@@ -119,16 +120,26 @@ void quickSort(int* a, int n){
 	quickrec(a, 0, n);
 }
 
+void dutchFlag(int* a, int n){
+	map<int, int> m;
+	for(int i=0;i<n;i++)
+		m[a[i]]++;
+	int i = 0;
+	for(auto it:m)
+		for(int j=0;j<it.second;j++)
+			a[i++] = it.first;
+}
+
 int main() {
 	srand(time(NULL));
 
 	/* KNUTH SHUFFLE */
-	int a[10] = {0,1,2,3,4,5,6,7,8,9};
-	Knuth(a, 10);
-	cout<<"Knuth shuffle!"<<endl;
-	for(int i=0;i<10;i++)
-		cout<<a[i]<<" ";
-	cout<<endl;
+//	int a[10] = {0,1,2,3,4,5,6,7,8,9};
+//	Knuth(a, 10);
+//	cout<<"Knuth shuffle!"<<endl;
+//	for(int i=0;i<10;i++)
+//		cout<<a[i]<<" ";
+//	cout<<endl;
 
 	/* INSERTION SORT */
 //	insertionSort(a, 10);
@@ -161,16 +172,24 @@ int main() {
 //	cout<<endl;
 
 	/* QUICK SORT */
-	cout<<"Quick sort!"<<endl;
-	quickSort(a, 10);
-	for(int i=0;i<10;i++)
-		cout<<a[i]<<" ";
-	cout<<endl;
+//	cout<<"Quick sort!"<<endl;
+//	quickSort(a, 10);
+//	for(int i=0;i<10;i++)
+//		cout<<a[i]<<" ";
+//	cout<<endl;
 
 //	sort(a, a+10);
 //	for(int i=0;i<10;i++)
 //		cout<<a[i]<<" ";
 //	cout<<endl;
+
+	/* DUTCH FLAG */
+	int a[10] = {0,1,0,1,0,2,2,1,2,2};
+	dutchFlag(a, 10);
+	for(int i=0;i<10;i++)
+		cout<<a[i]<<" ";
+	cout<<endl;
+
 	return 0;
 
 }

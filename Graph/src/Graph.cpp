@@ -39,22 +39,18 @@ struct AdjMatrix{
 };
 
 struct AdjList{
-	map<int, list<int>* > adj;
-
-	void addVertex(int i){
-		adj[i] = new list<int>();
-	}
+	map<int, list<int> > adj;
 
 	void addEdge(int i, int j){
-		adj[i]->push_back(j);
+		adj[i].push_back(j);
 	}
 
 	bool hasEdge(int i, int j){
-		return find(adj[i]->begin(), adj[i]->end(), j) != adj[i]->end();
+		return find(adj[i].begin(), adj[i].end(), j) != adj[i].end();
 	}
 
 	void removeEdge(int i, int j){
-		adj[i]->remove(j);
+		adj[i].remove(j);
 	}
 
 };
@@ -62,15 +58,6 @@ struct AdjList{
 struct AdjSet{
 
 	map<int, set<int> > adj;
-
-	AdjSet(map<int, set<int> > adj){
-		this->adj = adj;
-	}
-
-	void addVertex(int i){
-		set<int> s;
-		adj[i] = s;
-	}
 
 	void addEdge(int i, int j){
 		adj[i].insert(j);
@@ -167,44 +154,55 @@ struct AdjSet{
 
 int main() {
 
-	map<int, set<int> > adj;
-	AdjSet* g = new AdjSet(adj);
-	g->addEdge(0, 3);
-	g->addEdge(1, 0);
-	g->addEdge(1, 4);
-	g->addEdge(2, 4);
-	g->addEdge(2, 5);
-	g->addEdge(3, 1);
-	g->addEdge(4, 3);
+//	AdjList g;
+//	g.addEdge(0, 3);
+//	g.addEdge(1, 0);
+//	g.addEdge(1, 4);
+//	g.addEdge(2, 4);
+//	g.addEdge(2, 5);
+//	g.addEdge(3, 1);
+//	g.addEdge(4, 3);
+//
+//	cout<<g.hasEdge(0,3)<<endl;
+
+
+	AdjSet g;
+	g.addEdge(0, 3);
+	g.addEdge(1, 0);
+	g.addEdge(1, 4);
+	g.addEdge(2, 4);
+	g.addEdge(2, 5);
+	g.addEdge(3, 1);
+	g.addEdge(4, 3);
 
 	/* DFS */
 //	set<int> visited;
 //	map<int, int> result;
-//	g->dfs(2, visited, 0, result);
+//	g.dfs(2, visited, 0, result);
 //	for(auto it:result)
 //		cout<<it.first<<" "<<it.second<<endl;
-
-//	cout<<g->existPath(2, 1)<<endl;
-//	cout<<g->existPath(1, 2)<<endl;
+//
+//	cout<<g.existPath(2, 1)<<endl;
+//	cout<<g.existPath(1, 2)<<endl;
 
 	/* PATH EXTRACTION */
 //	map<int, int> visited;
-//	g->dfs(-1, 2, visited);
+//	g.dfs(-1, 2, visited);
 //	for(auto it:visited)
 //		cout<<it.first<<" "<<it.second<<endl;
 
 	/* STACK CALL */
 //	set<int> visited;
-//	g->dfs(1, visited);
+//	g.dfs(1, visited);
 //	for(auto it:visited)
 //		cout<<it<<endl;
 
 	/* BFS DISTANCE*/
-//	queue<int> q;
-//	map<int, int> distances;
-//	g->bfs(2, q, distances);
-//	for(auto it:distances)
-//		cout<<it.first<<" "<<it.second<<endl;
+	queue<int> q;
+	map<int, int> distances;
+	g.bfs(2, q, distances);
+	for(auto it:distances)
+		cout<<it.first<<" "<<it.second<<endl;
 
 	return 0;
 }
