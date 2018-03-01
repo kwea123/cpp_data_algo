@@ -1,1 +1,7 @@
-Info: Nothing to build for Hash
+20:55:14 **** Incremental Build of configuration Debug for project Hash ****
+Info: Internal Builder is used for build
+g++ -O0 -g3 -Wall -c -fmessage-length=0 -std=c++11 -o "src\\Hash.o" "..\\src\\Hash.cpp" 
+g++ -o Hash.exe "src\\Hash.o" 
+
+20:55:17 Build Finished (took 3s.668ms)
+

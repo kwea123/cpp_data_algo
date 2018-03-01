@@ -203,16 +203,16 @@ int main() {
 
 	/* HOMEWORK */
 
-	long long **dp = combi(50);
-	cout<<dp[50][25]<<endl;
+//	long long **dp = combi(50);
+//	cout<<dp[50][25]<<endl;
+//
+//	cout<<choose(50, 25)<<endl;
 
-	cout<<choose(50, 25)<<endl;
-
-//	ifstream fin("matrix.txt");
-//	for(int i=0;i<N;i++)
-//		for(int j=0;j<N;j++)
-//			fin>>matrix[i][j];
-//	cout<<f(0, ~(~0 << N));
+	ifstream fin("matrix.txt");
+	for(int i=0;i<N;i++)
+		for(int j=0;j<N;j++)
+			fin>>matrix[i][j];
+	cout<<f(0, ~(~0 << N));
 
 	return 0;
 

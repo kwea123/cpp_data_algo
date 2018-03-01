@@ -115,13 +115,17 @@ struct Graph{
 
 template <typename V>
 void backTrack(V destination, V source, map<V, V> antecedents){
-	V v = destination;
-	cout<<v;
-	while(v!=source){
-		V ante = antecedents[v];
-		cout<<"<-"<<ante;
-		v = ante;
+	while(destination!=source){
+		cout<<destination;
+		destination = antecedents[destination];
 	}
+//	V v = destination;
+//	cout<<v;
+//	while(v!=source){
+//		V ante = antecedents[v];
+//		cout<<"<-"<<ante;
+//		v = ante;
+//	}
 }
 
 int main() {

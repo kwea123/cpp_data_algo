@@ -1,33 +1,21 @@
-10:10:01 **** Incremental Build of configuration Debug for project Graph ****
+14:04:09 **** Incremental Build of configuration Debug for project DP ****
 Info: Internal Builder is used for build
-g++ -O0 -g3 -Wall -c -fmessage-length=0 -std=c++11 -o "src\\Graph.o" "..\\src\\Graph.cpp" 
-g++ -o Graph.exe "src\\Graph.o" 
-Info: Nothing to build for Graph
-10:10:20 **** Incremental Build of configuration Debug for project Graph ****
+g++ -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\DP.o" "..\\src\\DP.cpp" 
+g++ -o DP.exe "src\\DP.o" 
+Info: Nothing to build for DP
+14:13:22 **** Incremental Build of configuration Debug for project DP ****
 Info: Internal Builder is used for build
-g++ -O0 -g3 -Wall -c -fmessage-length=0 -std=c++11 -o "src\\Graph.o" "..\\src\\Graph.cpp" 
-g++ -o Graph.exe "src\\Graph.o" 
-10:12:10 **** Incremental Build of configuration Debug for project Graph ****
+g++ -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\DP.o" "..\\src\\DP.cpp" 
+g++ -o DP.exe "src\\DP.o" 
+14:13:41 **** Incremental Build of configuration Debug for project DP ****
 Info: Internal Builder is used for build
-g++ -O0 -g3 -Wall -c -fmessage-length=0 -std=c++11 -o "src\\Graph.o" "..\\src\\Graph.cpp" 
-g++ -o Graph.exe "src\\Graph.o" 
-10:15:07 **** Incremental Build of configuration Debug for project Graph ****
+g++ -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\DP.o" "..\\src\\DP.cpp" 
+g++ -o DP.exe "src\\DP.o" 
+14:13:57 **** Incremental Build of configuration Debug for project DP ****
 Info: Internal Builder is used for build
-g++ -O0 -g3 -Wall -c -fmessage-length=0 -std=c++11 -o "src\\Graph.o" "..\\src\\Graph.cpp" 
-g++ -o Graph.exe "src\\Graph.o" 
-10:17:36 **** Incremental Build of configuration Debug for project Graph ****
+g++ -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\DP.o" "..\\src\\DP.cpp" 
+g++ -o DP.exe "src\\DP.o" 
+14:14:36 **** Incremental Build of configuration Debug for project DP ****
 Info: Internal Builder is used for build
-g++ -O0 -g3 -Wall -c -fmessage-length=0 -std=c++11 -o "src\\Graph.o" "..\\src\\Graph.cpp" 
-g++ -o Graph.exe "src\\Graph.o" 
-10:22:14 **** Incremental Build of configuration Debug for project Graph ****
-Info: Internal Builder is used for build
-g++ -O0 -g3 -Wall -c -fmessage-length=0 -std=c++11 -o "src\\Graph.o" "..\\src\\Graph.cpp" 
-g++ -o Graph.exe "src\\Graph.o" 
-10:22:32 **** Incremental Build of configuration Debug for project Graph ****
-Info: Internal Builder is used for build
-g++ -O0 -g3 -Wall -c -fmessage-length=0 -std=c++11 -o "src\\Graph.o" "..\\src\\Graph.cpp" 
-g++ -o Graph.exe "src\\Graph.o" 
-10:29:04 **** Incremental Build of configuration Debug for project Graph ****
-Info: Internal Builder is used for build
-g++ -O0 -g3 -Wall -c -fmessage-length=0 -std=c++11 -o "src\\Graph.o" "..\\src\\Graph.cpp" 
-g++ -o Graph.exe "src\\Graph.o" 
+g++ -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\DP.o" "..\\src\\DP.cpp" 
+g++ -o DP.exe "src\\DP.o" 

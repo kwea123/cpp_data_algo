@@ -127,7 +127,7 @@ struct Board{
 		s->color = color;
 		bool containsNeighbor = false;
 		for(Stone* n : neighbors(s))
-			if(groups.count(find(n)) && n->color==s->color){
+			if(n->color==s->color){
 				Stone* toDelete = uni(n, s);
 				groups.erase(toDelete);
 				containsNeighbor = true;

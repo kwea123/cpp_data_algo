@@ -53,6 +53,14 @@ struct AdjList{
 		adj[i].remove(j);
 	}
 
+	int nVertices(){
+		return adj.size();
+	}
+
+	int nEdges(int i){
+		return adj[i].size();
+	}
+
 };
 
 struct AdjSet{
@@ -181,7 +189,7 @@ int main() {
 //	g.dfs(2, visited, 0, result);
 //	for(auto it:result)
 //		cout<<it.first<<" "<<it.second<<endl;
-//
+
 //	cout<<g.existPath(2, 1)<<endl;
 //	cout<<g.existPath(1, 2)<<endl;
 

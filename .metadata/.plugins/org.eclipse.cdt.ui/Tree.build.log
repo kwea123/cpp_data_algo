@@ -1,7 +1,15 @@
-11:47:24 **** Incremental Build of configuration Debug for project Tree ****
+16:14:45 **** Incremental Build of configuration Debug for project Tree ****
 Info: Internal Builder is used for build
 g++ -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\Tree.o" "..\\src\\Tree.cpp" 
+..\src\Tree.cpp: In member function 'void HashChainNode::Shrink()':
+..\src\Tree.cpp:54:6: warning: variable 'sizeorig' set but not used [-Wunused-but-set-variable]
+  int sizeorig;
+      ^
 g++ -o Tree.exe "src\\Tree.o" 
+src\Tree.o: In function `main':
+C:\Users\kwea123\Desktop\Data_Algo\Tree\Debug/../src/Tree.cpp:169: undefined reference to `HashChainNode::~HashChainNode()'
+C:\Users\kwea123\Desktop\Data_Algo\Tree\Debug/../src/Tree.cpp:169: undefined reference to `HashChainNode::~HashChainNode()'
+collect2.exe: error: ld returned 1 exit status
 
-11:47:28 Build Finished (took 4s.381ms)
+16:14:49 Build Finished (took 3s.452ms)
 
