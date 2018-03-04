@@ -86,7 +86,7 @@ struct BIT_RMQ{
 		constructRec(a, 0, n-1, 1); //construct tree from idx = 1 (root)
 	}
 
-	int RMQRec(int tl, int tr, int ql, int qr, int idx){ //return min index of a[ql..qr] from tree[tl..tr], idx=index of current node
+	int RMQRec(int tl, int tr, int ql, int qr, int idx){ //return min index of a[ql..qr] from tree[tl..tr]
 		if(ql<=tl&&qr>=tr) //if the tree segment is included in the query segment
 			return tree[idx];
 		if(qr<tl||ql>tr) //if the query segment is outside the tree segment
@@ -189,30 +189,30 @@ int LCA(vector<int> L, vector<int> E, vector<int> H, int t1, int t2){
 int main() {
 
 	/* BIT */
-//	int N = 50000;
-//	BIT bit = BIT(N);
-//
-//	clock_t t1 = clock();
-//
-//	for(int i=1;i<=N;i++)
-//		bit.add(i, i);
-//	for(int i=1;i<N;i++)
-//		bit.cumulativeSum(i);
-//
-//	clock_t t2 = clock();
-//	cout<<"BIT takes : "<<t2 - t1<<" clock cycles."<<endl;
-//
-//	int* a = new int[N+1]();
-//	int sum = 0;
-//	for(int i=1;i<=N;i++)
-//		a[i] = i;
-//	for(int i=1;i<N;i++){
-//		sum = 0;
-//		for(int j=1;j<=i;j++)
-//			sum += a[j];
-//	}
-//
-//	cout<<"Array takes : "<<clock() - t2<<" clock cycles."<<endl;
+	int N = 50000;
+	BIT bit = BIT(N);
+
+	clock_t t1 = clock();
+
+	for(int i=1;i<=N;i++)
+		bit.add(i, i);
+	for(int i=1;i<N;i++)
+		bit.cumulativeSum(i);
+
+	clock_t t2 = clock();
+	cout<<"BIT takes : "<<t2 - t1<<" clock cycles."<<endl;
+
+	int* a = new int[N+1]();
+	int sum = 0;
+	for(int i=1;i<=N;i++)
+		a[i] = i;
+	for(int i=1;i<N;i++){
+		sum = 0;
+		for(int j=1;j<=i;j++)
+			sum += a[j];
+	}
+
+	cout<<"Array takes : "<<clock() - t2<<" clock cycles."<<endl;
 
 	/* RMQ */
 //	int a[10] = {2, 4, 3, 1, 6, 7, 8, 9, 1, 7};
@@ -223,30 +223,30 @@ int main() {
 //	cout<<bit_rmq.RMQ(5, 9)<<endl;
 
 	/* LCA */
-	int N = 13;
-	Tree** tree = new Tree*[N+1];
-	for(int i=1;i<=N;i++)
-		tree[i] = new Tree(i);
-	tree[10]->addChild(tree[12]);
-	tree[10]->addChild(tree[13]);
-	tree[7]->addChild(tree[10]);
-	tree[7]->addChild(tree[11]);
-	tree[6]->addChild(tree[8]);
-	tree[6]->addChild(tree[9]);
-	tree[3]->addChild(tree[5]);
-	tree[3]->addChild(tree[6]);
-	tree[3]->addChild(tree[7]);
-	tree[1]->addChild(tree[2]);
-	tree[1]->addChild(tree[3]);
-	tree[1]->addChild(tree[4]);
-
-	vector<int> L = levelTour(tree[1], 0);
-	vector<int> E = eulerTour(tree[1]);
-	vector<int> H = occurrence(E, N);
-
-	int t1 = 9, t2 = 12;
-
-	cout<<"The LCA of "<<t1<<" and "<<t2<<" is "<<LCA(L, E, H, t1, t2)<<endl;
+//	int N = 13;
+//	Tree** tree = new Tree*[N+1];
+//	for(int i=1;i<=N;i++)
+//		tree[i] = new Tree(i);
+//	tree[10]->addChild(tree[12]);
+//	tree[10]->addChild(tree[13]);
+//	tree[7]->addChild(tree[10]);
+//	tree[7]->addChild(tree[11]);
+//	tree[6]->addChild(tree[8]);
+//	tree[6]->addChild(tree[9]);
+//	tree[3]->addChild(tree[5]);
+//	tree[3]->addChild(tree[6]);
+//	tree[3]->addChild(tree[7]);
+//	tree[1]->addChild(tree[2]);
+//	tree[1]->addChild(tree[3]);
+//	tree[1]->addChild(tree[4]);
+//
+//	vector<int> L = levelTour(tree[1], 0);
+//	vector<int> E = eulerTour(tree[1]);
+//	vector<int> H = occurrence(E, N);
+//
+//	int t1 = 9, t2 = 12;
+//
+//	cout<<"The LCA of "<<t1<<" and "<<t2<<" is "<<LCA(L, E, H, 9, 12)<<endl;
 
 	return 0;
 }

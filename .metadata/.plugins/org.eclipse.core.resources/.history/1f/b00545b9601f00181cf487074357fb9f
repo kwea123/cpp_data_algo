@@ -246,7 +246,7 @@ int main() {
 
 	int t1 = 9, t2 = 12;
 
-	cout<<"The LCA of "<<t1<<" and "<<t2<<" is "<<LCA(L, E, H, t1, t2)<<endl;
+	cout<<"The LCA of "<<t1<<" and "<<t2<<" is "<<LCA(L, E, H, 9, 12)<<endl;
 
 	return 0;
 }

@@ -215,38 +215,38 @@ int main() {
 //	cout<<"Array takes : "<<clock() - t2<<" clock cycles."<<endl;
 
 	/* RMQ */
-//	int a[10] = {2, 4, 3, 1, 6, 7, 8, 9, 1, 7};
-//	BIT_RMQ bit_rmq = BIT_RMQ(10, a);
-//	cout<<bit_rmq.RMQ(2, 7)<<endl;
-//	cout<<bit_rmq.RMQ(5, 9)<<endl;
-//	bit_rmq.update(8, 10);
-//	cout<<bit_rmq.RMQ(5, 9)<<endl;
+	int a[10] = {2, 4, 3, 1, 6, 7, 8, 9, 1, 7};
+	BIT_RMQ bit_rmq = BIT_RMQ(10, a);
+	cout<<bit_rmq.RMQ(2, 7)<<endl;
+	cout<<bit_rmq.RMQ(5, 9)<<endl;
+	bit_rmq.update(8, 10);
+	cout<<bit_rmq.RMQ(5, 9)<<endl;
 
 	/* LCA */
-	int N = 13;
-	Tree** tree = new Tree*[N+1];
-	for(int i=1;i<=N;i++)
-		tree[i] = new Tree(i);
-	tree[10]->addChild(tree[12]);
-	tree[10]->addChild(tree[13]);
-	tree[7]->addChild(tree[10]);
-	tree[7]->addChild(tree[11]);
-	tree[6]->addChild(tree[8]);
-	tree[6]->addChild(tree[9]);
-	tree[3]->addChild(tree[5]);
-	tree[3]->addChild(tree[6]);
-	tree[3]->addChild(tree[7]);
-	tree[1]->addChild(tree[2]);
-	tree[1]->addChild(tree[3]);
-	tree[1]->addChild(tree[4]);
-
-	vector<int> L = levelTour(tree[1], 0);
-	vector<int> E = eulerTour(tree[1]);
-	vector<int> H = occurrence(E, N);
-
-	int t1 = 9, t2 = 12;
-
-	cout<<"The LCA of "<<t1<<" and "<<t2<<" is "<<LCA(L, E, H, t1, t2)<<endl;
+//	int N = 13;
+//	Tree** tree = new Tree*[N+1];
+//	for(int i=1;i<=N;i++)
+//		tree[i] = new Tree(i);
+//	tree[10]->addChild(tree[12]);
+//	tree[10]->addChild(tree[13]);
+//	tree[7]->addChild(tree[10]);
+//	tree[7]->addChild(tree[11]);
+//	tree[6]->addChild(tree[8]);
+//	tree[6]->addChild(tree[9]);
+//	tree[3]->addChild(tree[5]);
+//	tree[3]->addChild(tree[6]);
+//	tree[3]->addChild(tree[7]);
+//	tree[1]->addChild(tree[2]);
+//	tree[1]->addChild(tree[3]);
+//	tree[1]->addChild(tree[4]);
+//
+//	vector<int> L = levelTour(tree[1], 0);
+//	vector<int> E = eulerTour(tree[1]);
+//	vector<int> H = occurrence(E, N);
+//
+//	int t1 = 9, t2 = 12;
+//
+//	cout<<"The LCA of "<<t1<<" and "<<t2<<" is "<<LCA(L, E, H, 9, 12)<<endl;
 
 	return 0;
 }

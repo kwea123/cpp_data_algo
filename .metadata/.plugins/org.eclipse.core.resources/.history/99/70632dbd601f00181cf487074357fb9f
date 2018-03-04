@@ -244,7 +244,7 @@ int main() {
 	vector<int> E = eulerTour(tree[1]);
 	vector<int> H = occurrence(E, N);
 
-	int t1 = 9, t2 = 12;
+	int t1 = 9, t2 = 11;
 
 	cout<<"The LCA of "<<t1<<" and "<<t2<<" is "<<LCA(L, E, H, t1, t2)<<endl;
 

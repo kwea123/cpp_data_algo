@@ -19,3 +19,19 @@ g++ -o DP.exe "src\\DP.o"
 Info: Internal Builder is used for build
 g++ -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\DP.o" "..\\src\\DP.cpp" 
 g++ -o DP.exe "src\\DP.o" 
+11:28:50 **** Incremental Build of configuration Debug for project Advanced ****
+Info: Internal Builder is used for build
+g++ -O0 -g3 -Wall -c -fmessage-length=0 -std=c++11 -o "src\\Advanced.o" "..\\src\\Advanced.cpp" 
+g++ -o Advanced.exe "src\\Advanced.o" 
+11:50:42 **** Incremental Build of configuration Debug for project Advanced ****
+Info: Internal Builder is used for build
+g++ -O0 -g3 -Wall -c -fmessage-length=0 -std=c++11 -o "src\\Advanced.o" "..\\src\\Advanced.cpp" 
+g++ -o Advanced.exe "src\\Advanced.o" 
+12:01:08 **** Incremental Build of configuration Debug for project Advanced ****
+Info: Internal Builder is used for build
+g++ -O0 -g3 -Wall -c -fmessage-length=0 -std=c++11 -o "src\\Advanced.o" "..\\src\\Advanced.cpp" 
+g++ -o Advanced.exe "src\\Advanced.o" 
+12:01:33 **** Incremental Build of configuration Debug for project Advanced ****
+Info: Internal Builder is used for build
+g++ -O0 -g3 -Wall -c -fmessage-length=0 -std=c++11 -o "src\\Advanced.o" "..\\src\\Advanced.cpp" 
+g++ -o Advanced.exe "src\\Advanced.o" 
