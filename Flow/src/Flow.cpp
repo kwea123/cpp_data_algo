@@ -57,7 +57,7 @@ struct FlowGraph{
 		while(1){
 			queue<V> q;
 			map<V, V> visited;
-			if(!bfs(q, visited))
+			if(!bfs(q, visited)) // if we cannot go from s to t in the residual graph
 				break;
 			V parent = t;
 			int bottleneck = 1e8; // a large value

@@ -1,1 +1,7 @@
-Info: Nothing to build for Flow
+10:53:57 **** Rebuild of configuration Debug for project Flow ****
+Info: Internal Builder is used for build
+g++ -O0 -g3 -Wall -c -fmessage-length=0 -std=c++11 -o "src\\Flow.o" "..\\src\\Flow.cpp" 
+g++ -o Flow.exe "src\\Flow.o" 
+
+10:54:08 Build Finished (took 10s.835ms)
+

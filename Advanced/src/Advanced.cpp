@@ -13,7 +13,7 @@ struct BIT{
 		this->tree = new int[N+1]();
 	}
 
-	void add(int idx ,int val){ //adds val to a[idx]
+	void add(int idx, int val){ //adds val to a[idx]
 	    while (idx <= N){
 	        tree[idx] += val;
 	        idx += (idx & -idx);

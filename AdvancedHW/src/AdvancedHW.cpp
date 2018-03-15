@@ -2,7 +2,7 @@
 #include <iostream>
 using namespace std;
 
-int N = 15;
+int N = 8;
 
 bool check(int* col, int r){
 	for(int q=0;q<r;q++)

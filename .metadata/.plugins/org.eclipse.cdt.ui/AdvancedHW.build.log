@@ -1,1 +1,7 @@
-Info: Nothing to build for AdvancedHW
+20:30:55 **** Incremental Build of configuration Debug for project AdvancedHW ****
+Info: Internal Builder is used for build
+g++ -O0 -g3 -Wall -c -fmessage-length=0 -std=c++11 -o "src\\AdvancedHW.o" "..\\src\\AdvancedHW.cpp" 
+g++ -o AdvancedHW.exe "src\\AdvancedHW.o" "src\\AdvancedHW_answer.o" 
+
+20:30:58 Build Finished (took 2s.723ms)
+
