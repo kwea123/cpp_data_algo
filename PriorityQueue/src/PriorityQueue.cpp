@@ -128,6 +128,14 @@ struct HuffmanTree{
 	}
 };
 
+struct comparator
+{
+  bool operator()(const HuffmanTree* lhs, const HuffmanTree* rhs) const
+  {
+    return lhs->freq > rhs->freq; //we want smaller values in front
+  }
+};
+
 int main() {
 
 	/* WIKI TITLE */
@@ -157,7 +165,7 @@ int main() {
 	/* HUFFMAN TREE */
 	string word = "mississippi";
 
-	priority_queue<HuffmanTree*> q;
+	priority_queue<HuffmanTree*, vector<HuffmanTree*>, comparator> q;
 	q.push(new HuffmanTree('i',4));
 	q.push(new HuffmanTree('s',4));
 	q.push(new HuffmanTree('m',1));
