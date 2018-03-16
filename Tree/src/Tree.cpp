@@ -332,13 +332,13 @@ int main() {
 //	cout<<size(t)<<" "<<height(t)<<endl;
 
 	/* BST */
-	BST* l = new BST(new BST(NULL, "D", NULL), "A", new BST(NULL, "E", NULL));
-	BST* rl = new BST(new BST(NULL, "L", NULL), "M", NULL);
-	BST* rr = new BST(new BST(NULL, "P", NULL), "X", NULL);
-	BST* r = new BST(rl, "O", rr);
-	BST* b = new BST(l, "G", r);
-	cout<<LCA(b, "D", "L")->value<<endl; //G
-	cout<<LCA(b, "P", "L")->value<<endl; //O
+//	BST* l = new BST(new BST(NULL, "D", NULL), "A", new BST(NULL, "E", NULL));
+//	BST* rl = new BST(new BST(NULL, "L", NULL), "M", NULL);
+//	BST* rr = new BST(new BST(NULL, "P", NULL), "X", NULL);
+//	BST* r = new BST(rl, "O", rr);
+//	BST* b = new BST(l, "G", r);
+//	cout<<LCA(b, "D", "L")->value<<endl; //G
+//	cout<<LCA(b, "P", "L")->value<<endl; //O
 
 	/* AVLSet */
 //	AVLSet s;
