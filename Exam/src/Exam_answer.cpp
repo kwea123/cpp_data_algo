@@ -27,6 +27,8 @@
 //	// Your program must run in O(n) (n is the length of s)
 //	// A naive solution runs in O(nk)...
 //
+//  // Extra : What if s is a list of chars?
+//
 //	vector<string> v;
 //	int oc[26] = {0};
 //	bool ok = true;
