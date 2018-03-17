@@ -90,6 +90,8 @@
 //	//         6   7   8   9
 //
 //	// Requirements : What's your program's complexity?
+//	// Answer : O(n^2) in worst case and O(nlogn) in average
+//	// See 5_Sort quicksort for calculation
 //	// Hint : To contruct a tree, which method do we often use?
 //	int value = preorder[0]-'0';
 //	int left_count = inorder.find(preorder[0]);
