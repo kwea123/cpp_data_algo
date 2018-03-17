@@ -4,6 +4,7 @@
 #include <time.h>
 #include <vector>
 #include <algorithm>
+#include <map>
 using namespace std;
 
 vector<string> kdistinct(int k, string s){

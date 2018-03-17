@@ -3,7 +3,6 @@
 //#include <stdlib.h>
 //#include <time.h>
 //#include <vector>
-//#include <queue>
 //#include <map>
 //#include <algorithm>
 //using namespace std;
@@ -31,14 +30,11 @@
 //	vector<string> v;
 //	int oc[26] = {0};
 //	bool ok = true;
-//	queue<char> q;
 //	for(int i=0;i<(int)s.length();i++){
 //		if(i>=k){
-//			if(--oc[q.front()-'a']==1)
+//			if(--oc[s[i-k]-'a']==1)
 //				ok = true;
-//			q.pop();
 //		}
-//		q.push(s[i]);
 //		if(++oc[s[i]-'a']>1)
 //			ok = false;
 //		if(ok&&i>=k-1)
